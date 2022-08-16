@@ -9,6 +9,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule} from '@angular/material/icon';
 import { MatchesComponent } from './components/matches/matches.component'
+import { DataTablesModule } from 'angular-datatables';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { MatchesComponent } from './components/matches/matches.component'
     BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    DataTablesModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
