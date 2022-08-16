@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Match } from 'src/app/models/match.model';
 import { MatchService } from 'src/app/services/match.service';
 
@@ -17,8 +17,12 @@ export class MatchDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.matchId = params['_id'];
-      this getMatchDetails(this.matchId)
+      getMatchDetails(this.matchId);
     })
   }
 
 }
+function getMatchDetails(matchId: string) {
+  throw new Error('Function not implemented.');
+}
+
