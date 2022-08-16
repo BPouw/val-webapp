@@ -16,13 +16,17 @@ export class MatchDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.matchId = params['_id'];
-      getMatchDetails(this.matchId);
+      this.matchId = params['id'];
+      this.getMatchDetails(this.matchId);
     })
   }
 
-}
-function getMatchDetails(matchId: string) {
-  throw new Error('Function not implemented.');
+  getMatchDetails(matchId: string): void {
+    this.matchService.read(matchId).subscribe(data => {
+      this.match = data;
+    })
+  }
+  
+
 }
 

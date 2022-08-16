@@ -7,6 +7,7 @@ export class Team extends Entity {
     teamname!: string
     country!: string
     ranking!: number
+    logo!: string
     players!: Player[]
     matches!: Match[]
     tournaments!: Tournament[]
