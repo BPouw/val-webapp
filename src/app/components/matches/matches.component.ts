@@ -18,7 +18,7 @@ export class MatchesComponent implements OnInit {
   batchSize = 10
   batchNmbr = 0
 
-  constructor(private matchService: MatchService) { }
+  constructor(private matchService: MatchService, private router: Router) { }
 
   ngOnInit(): void {
     this.matchService.batch(this.batchSize, this.batchNmbr).subscribe(data => {
@@ -39,6 +39,10 @@ export class MatchesComponent implements OnInit {
 
   ngOnDestroy(): void {
     
+  }
+
+  matchDetails(match: Match) {
+    this.router.navigate(['matches', match._id])
   }
 
 }

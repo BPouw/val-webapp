@@ -41,3 +41,8 @@
   .mat-column-created {
     max-width: 124px;
   }
+
+  .mat-row:hover {
+    background-color: #E8EAF6;
+    cursor: pointer;
+  }

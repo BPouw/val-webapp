@@ -1,6 +1,6 @@
 <table mat-table [dataSource]="matches">
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-<tr mat-row *matRowDef="let matches; columns: columnsToDisplay"></tr>
+<tr mat-row *matRowDef="let match; columns: columnsToDisplay" (click)="matchDetails(match)"></tr>
     <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef>Date</th>
         <td mat-cell *matCellDef="let match">{{match.date | date:'shortDate'}}</td>

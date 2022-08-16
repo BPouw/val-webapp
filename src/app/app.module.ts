@@ -12,13 +12,15 @@ import { MatchesComponent } from './components/matches/matches.component'
 import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
+import { MatchDetailsComponent } from './components/match-details/match-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    MatchesComponent
+    MatchesComponent,
+    MatchDetailsComponent
   ],
   imports: [
     BrowserModule,
