@@ -35,6 +35,7 @@ export class MatchesComponent implements OnInit {
 
     this.matchService.batch(this.batchSize, this.batchNmbr).subscribe(data => {
       this.matches = this.matches.concat(data)
+      console.log(data)
 
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
         dtInstance.destroy()
