@@ -1,1 +1,26 @@
-<p>team-details works!</p>
+<div class="infocontainer">
+    <div class="logoname">
+        <img src="{{team.logo}}" alt="">
+        <div class="rank">
+            <h1>{{team.teamname}}</h1>
+            <h2>RANK: {{team.ranking}}</h2>
+        </div>
+    </div>
+    <div class="country">{{team.country}}</div>
+</div>
+
+<div class="players">
+<div class="playerscontainer">
+    <div class="playersteam">
+        <mat-list role="list">
+            <mat-list-item *ngFor="let player of players">
+                <img src="{{player.picture}}" matListAvatar alt="">
+                <div matLine> {{ player.gamertag}}</div>
+                <div matLine> {{player.fullname}}</div>
+                <div matLine>{{player.country}}</div>
+                <div matLine> earnings: ${{player.earnings}}</div>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>
+</div>

@@ -1,1 +1,9 @@
-<p>teams works!</p>
+<div class="container">
+    <h2>Valorant Pro Teams</h2>
+    <mat-list>
+        <mat-list-item class="team"(click)="teamDetails(team)"  *ngFor="let team of teams">
+            <div matLine>{{team.teamname}}</div>
+            <div matLine>{{team.country}}</div>
+        </mat-list-item>
+    </mat-list>
+</div>
