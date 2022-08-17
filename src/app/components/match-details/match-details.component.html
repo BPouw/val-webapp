@@ -1,4 +1,58 @@
-<p>{{match.name}}</p>
-<p>{{match.team1.teamname}}</p>
-<img src="{{match.team1.logo}}" alt="">
-<img src="{{match.team2.logo}}" alt="">
+<body>
+    <div class="matchcontainer">
+
+
+        <h1 class="title">{{match.name}}</h1>
+        <h2 class="date">{{match.date | date:'shortDate'}}</h2>
+
+
+        <div class="resultcontainer">
+
+            <div class="teamcontainer team2">
+                <h2 (click)="teamDetails(match.team1)" class="team">{{match.team1.teamname}}</h2>
+                <img src="{{match.team1.logo}}" alt="">
+            </div>
+
+            <div class="scorecontainer">
+                {{match.resultteam1}} - {{match.resultteam2}}
+            </div>
+
+            <div class="teamcontainer">
+                <img src="{{match.team2.logo}}" alt="">
+                <h2 (click)="teamDetails(match.team2)" class="team">{{match.team2.teamname}}</h2>
+            </div>
+
+        </div>
+
+        <h1 class="map">{{match.map}}</h1>
+
+        <h1 class="winner">Winner: {{match.winner.teamname}}</h1>
+        <h1></h1>
+
+
+    </div>
+
+    <div class="players">
+
+        <div class="playersContainer">
+            <div class="playersteam">
+                <h1>{{match.team1.teamname}}</h1>
+                <mat-list role="list">
+                    <mat-list-item *ngFor="let player of playersteam1">
+                        <div matLine> {{ player.gamertag}}</div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+
+            <div class="playersteam">
+                <h1>{{match.team2.teamname}}</h1>
+                <mat-list role="list">
+                    <mat-list-item *ngFor="let player of playersteam2">
+                        <div matLine> {{ player.gamertag}}</div>
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+
+    </div>
+</body>

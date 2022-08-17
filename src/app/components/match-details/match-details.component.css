@@ -1,0 +1,92 @@
+
+.resultcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 40px;
+    padding-left: 40px;
+}
+
+.title {
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    font-weight: 900;
+    padding-top: 80px;
+    padding-bottom: 30px;
+}
+
+.matchcontainer {
+    background-color: #673ab7;
+}
+
+.teamcontainer {
+    display: flex;
+    color: white;
+    align-items: center;
+}
+
+.teamcontainer h2 {
+    font-size: 30px;
+    font-weight: 900;
+    margin: 0;
+}
+
+.team2{
+    font-size: 70px;
+}
+
+.scorecontainer {
+    font-size: 30px;
+    color: white;
+    font-weight: 900;
+    margin: 0;
+}
+
+.teamcontainer img {
+    width: 65px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.map {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.team:hover {
+    cursor: pointer;
+}
+
+.date {
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    padding-bottom: 10px;
+}
+
+.winner {
+    text-align: center;
+    color: #ffd740;
+    padding-bottom: 50px;
+}
+
+
+.playersContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.playersteam {
+    padding: 30px;
+}
+
+.playersteam h1 {
+    color: #673ab7;
+    font-weight: 900;
+}
+
+

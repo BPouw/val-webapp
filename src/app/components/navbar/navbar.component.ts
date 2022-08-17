@@ -17,4 +17,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['matches'])
   }
 
+  openTeams(): void {
+    this.router.navigate(['teams'])
+  }
+
 }

@@ -13,6 +13,9 @@ import { DataTablesModule } from 'angular-datatables';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatchDetailsComponent } from './components/match-details/match-details.component';
+import { MatListModule} from '@angular/material/list';
+import { TeamsComponent } from './components/teams/teams.component';
+import { TeamDetailsComponent } from './components/team-details/team-details.component'
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { MatchDetailsComponent } from './components/match-details/match-details.
     AppComponent,
     NavbarComponent,
     MatchesComponent,
-    MatchDetailsComponent
+    MatchDetailsComponent,
+    TeamsComponent,
+    TeamDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,8 @@ import { MatchDetailsComponent } from './components/match-details/match-details.
     MatIconModule,
     DataTablesModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
