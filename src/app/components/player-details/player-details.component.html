@@ -1,1 +1,22 @@
-<p>player-details works!</p>
+<div class="banner">
+    <img class="headshot" src="{{player.picture}}" alt="">
+    <div class="vertical">
+        <div class="playername">{{player.gamertag}}</div>
+        <div class="playerfullname">{{player.fullname}}</div>
+        <div class="country">{{player.country}}</div>        
+        <div class="earnings">Earnings: ${{player.earnings}}</div>
+    </div>
+        <div class="team">
+            <img class="logo" (click)="teamDetails(team)" src="{{team.logo}}" alt="">
+        </div>
+
+</div>
+
+
+<h1 class="agentline">AGENTS</h1>
+
+<div class="agentscontainer">
+    <div class="agents" *ngFor="let agent of lowAgents">
+        <img src="https://www.vlr.gg/img/vlr/game/agents/{{agent}}.png" alt="">
+    </div>
+</div>
