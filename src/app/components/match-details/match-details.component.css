@@ -1,9 +1,30 @@
-
 .resultcontainer {
     display: flex;
+    padding-bottom: 40px;
+}
+.teamcontainer1, .teamcontainer2 {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+.teamcontainer1 {
+    color: white;
+    margin-right: auto;
+    justify-content: flex-end;
+}
+.teamcontainer2 {
+    color: white;
+    margin-left: auto;
+    justify-content: flex-start;
+}
+.scorecontainer {
+    display: flex;
+    font-size: 30px;
+    color: white;
+    font-weight: 900;
     justify-content: center;
     align-items: center;
-    padding-bottom: 40px;
+    flex: 0.2;
 }
 
 .title {
@@ -19,16 +40,6 @@
     background-color: #673ab7;
 }
 
-.teamcontainer1 {
-    display: flex;
-    color: white;
-    align-items: center;
-}
-.teamcontainer2 {
-    display: flex;
-    color: white;
-    align-items: center;
-}
 
 .teamcontainer1 h2 {
     font-size: 30px;
@@ -43,16 +54,6 @@
     margin: 0;
 }
 
-.team2{
-    font-size: 70px;
-}
-
-.scorecontainer {
-    font-size: 30px;
-    color: white;
-    font-weight: 900;
-    margin: 0;
-}
 
 .teamcontainer1 img {
     width: 65px;
