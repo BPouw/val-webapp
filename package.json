@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -23,7 +23,9 @@
     "angular-datatables": "^14.0.0",
     "datatables.net": "^1.11.3",
     "datatables.net-bs5": "^1.11.3",
+    "express": "^4.18.1",
     "jquery": "^3.6.0",
+    "path": "^0.12.7",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
