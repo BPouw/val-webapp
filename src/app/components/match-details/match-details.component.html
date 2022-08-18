@@ -38,7 +38,8 @@
             <div class="playersteam">
                 <h1>{{match.team1.teamname}}</h1>
                 <mat-list role="list">
-                    <mat-list-item *ngFor="let player of playersteam1">
+                    <mat-list-item (click)="playerDetails(player)" *ngFor="let player of playersteam1">
+                        <img matListAvatar src="{{player.picture}}" alt="">
                         <div matLine> {{ player.gamertag}}</div>
                     </mat-list-item>
                 </mat-list>
@@ -47,7 +48,8 @@
             <div class="playersteam">
                 <h1>{{match.team2.teamname}}</h1>
                 <mat-list role="list">
-                    <mat-list-item *ngFor="let player of playersteam2">
+                    <mat-list-item (click)="playerDetails(player)" *ngFor="let player of playersteam2">
+                        <img matListAvatar src="{{player.picture}}" alt="">
                         <div matLine> {{ player.gamertag}}</div>
                     </mat-list-item>
                 </mat-list>

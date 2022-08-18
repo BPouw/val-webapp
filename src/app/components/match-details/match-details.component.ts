@@ -37,6 +37,10 @@ export class MatchDetailsComponent implements OnInit {
     this.router.navigate(["teams", team._id])
   }
   
+  playerDetails(player: Player) {
+    this.router.navigate(['players', player._id])
+  }
+  
 
 }
 

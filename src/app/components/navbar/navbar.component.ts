@@ -21,4 +21,8 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['teams'])
   }
 
+  openPlayers(): void {
+    this.router.navigate(['players'])
+  }
+
 }

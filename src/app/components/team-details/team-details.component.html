@@ -14,7 +14,7 @@
         <div class="playerscontainer">
             <div class="playersteam">
                 <mat-list role="list">
-                    <mat-list-item *ngFor="let player of players">
+                    <mat-list-item (click)="playerDetails(player)" *ngFor="let player of players">
                         <img src="{{player.picture}}" matListAvatar alt="">
                         <div matLine> {{ player.gamertag}}</div>
                         <div matLine> {{player.fullname}}</div>

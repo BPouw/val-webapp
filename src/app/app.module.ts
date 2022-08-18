@@ -15,7 +15,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatchDetailsComponent } from './components/match-details/match-details.component';
 import { MatListModule} from '@angular/material/list';
 import { TeamsComponent } from './components/teams/teams.component';
-import { TeamDetailsComponent } from './components/team-details/team-details.component'
+import { TeamDetailsComponent } from './components/team-details/team-details.component';
+import { PlayersComponent } from './components/players/players.component';
+import { PlayerDetailsComponent } from './components/player-details/player-details.component';
+import { MatGridListModule } from '@angular/material/grid-list'
+import { MatCardModule} from '@angular/material/card'
 
 
 @NgModule({
@@ -25,7 +29,9 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
     MatchesComponent,
     MatchDetailsComponent,
     TeamsComponent,
-    TeamDetailsComponent
+    TeamDetailsComponent,
+    PlayersComponent,
+    PlayerDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +43,9 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
     DataTablesModule,
     HttpClientModule,
     MatTableModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

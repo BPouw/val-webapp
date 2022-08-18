@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Data, Router} from '@angular/router'
 import { Match } from 'src/app/models/match.model';
+import { Player } from 'src/app/models/player.model';
 import { MatchService} from 'src/app/services/match.service'
 
 @Component({
@@ -44,5 +45,7 @@ export class MatchesComponent implements OnInit {
   matchDetails(match: Match) {
     this.router.navigate(['matches', match._id])
   }
+
+
 
 }

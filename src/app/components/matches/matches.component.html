@@ -1,3 +1,5 @@
+<div class="header">Valorant Matches</div>
+
 <table mat-table [dataSource]="matches">
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
 <tr mat-row *matRowDef="let match; columns: columnsToDisplay" (click)="matchDetails(match)"></tr>

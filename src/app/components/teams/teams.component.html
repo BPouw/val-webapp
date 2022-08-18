@@ -1,7 +1,11 @@
+<div class="header">
+    Valorant Teams
+</div>
+
 <div class="container">
-    <h2>Valorant Pro Teams</h2>
     <mat-list>
         <mat-list-item class="team"(click)="teamDetails(team)"  *ngFor="let team of teams">
+            <img src="{{team.logo}}" matListAvatar alt="">
             <div matLine>{{team.teamname}}</div>
             <div matLine>{{team.country}}</div>
         </mat-list-item>
