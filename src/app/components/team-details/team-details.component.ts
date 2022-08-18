@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Match } from 'src/app/models/match.model';
 import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
@@ -15,16 +15,23 @@ export class TeamDetailsComponent implements OnInit {
   team!: Team
   players: Player[] = [];
   matches: Match[] = [];
+  columnsToDisplay = ['date', 'matchname', 'map', 'teams', 'score', 'winner'];
 
-  constructor(private teamService: TeamService, private activatedRoute: ActivatedRoute) { }
+  constructor(private teamService: TeamService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.teamService.read(params['id']).subscribe(data => {
         this.team = data;
         this.players = this.team.players
+        this.matches = this.team.matches
+        console.log(this.matches)
       })
     })
+  }
+
+  matchDetails(match: Match): void {
+    this.router.navigate(["matches", match._id])
   }
 
 }
