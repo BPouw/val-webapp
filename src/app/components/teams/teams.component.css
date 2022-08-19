@@ -10,3 +10,15 @@
     padding: 60px;
     font-weight: 500;
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.team {
+     background-color: #673ab7;
+     border-bottom-left-radius: 10px;
+     border-top-left-radius: 10px; 
+     margin-top: 60px;
+}

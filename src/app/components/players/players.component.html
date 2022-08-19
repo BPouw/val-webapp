@@ -4,23 +4,22 @@
   
   <div class="playerscontainer">
         <div class="players">
-            <mat-grid-list cols="5" rowHeight="14rem">
+            <mat-grid-list cols="5" rowHeight="11rem">
                 <mat-grid-tile *ngFor="let player of players">
 
                     <mat-card class="card" (click)="playerDetails(player)">
                         <mat-card-title-group>
-                            <div class="text">
-                                <mat-card-title>{{player.gamertag}}</mat-card-title>
-                                <mat-card-subtitle>{{player.fullname}}</mat-card-subtitle> 
-                                                            
-                            </div>
+                            <div class="playerpicture">
                             <img mat-card-md-image src="{{player.picture}}" alt="">
-                            <img class="logo" src="{{player.team.logo}}" alt="">
-                        
+                            </div>
+                            <div class="logotext">
+                                <img class="logo" src="{{player.team.logo}}" alt="">
+                                <div class="text">
+                                    <mat-card-title>{{player.gamertag}}</mat-card-title>
+                                    <mat-card-subtitle>{{player.fullname}}</mat-card-subtitle>                            
+                                </div>
+                            </div>
                         </mat-card-title-group>
-
-
-                        
                     </mat-card>
                     
                 </mat-grid-tile>
