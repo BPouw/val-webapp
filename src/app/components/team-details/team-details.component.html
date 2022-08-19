@@ -16,10 +16,9 @@
                 <mat-list role="list">
                     <mat-list-item (click)="playerDetails(player)" *ngFor="let player of players">
                         <img src="{{player.picture}}" matListAvatar alt="">
-                        <div matLine> {{ player.gamertag}}</div>
+                        <div matLine style="font-weight: bold;"> {{ player.gamertag}}</div>
                         <div matLine> {{player.fullname}}</div>
                         <div matLine>{{player.country}}</div>
-                        <div matLine> earnings: ${{player.earnings}}</div>
                     </mat-list-item>
                 </mat-list>
             </div>
