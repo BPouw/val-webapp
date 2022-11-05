@@ -22,4 +22,8 @@ export class AppComponent {
       this.username = user.username;
     }
   }
+
+  loggedIn(value: boolean): void {
+    this.isLoggedIn = value;
+  }
 }

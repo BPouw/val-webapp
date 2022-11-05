@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +10,19 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService: AuthService, private storageService: StorageService) { 
+    this.storageService.changeEmitted$.subscribe(result => {
+      this.signedIn = result;
+    })
+  }
+
+  signedIn = false;
+
 
   ngOnInit(): void {
+    if(this.storageService.isLoggedIn()) {
+      this.signedIn = true;
+    }
   }
 
   openMatches(): void {
@@ -21,7 +33,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['teams'])
   }
 
-  openPlayers(): void {
+  openPlayers(): void {   
     this.router.navigate(['players'])
   }
 
@@ -33,4 +45,12 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['register'])
   }
 
+  signOut(): void {
+    console.log("komen we hier?")
+    this.storageService.clean();
+    this.authService.logout();
+    this.signedIn = false;
+    console.log(this.signedIn);
+    this.router.navigate(['login'])
+  }
 }

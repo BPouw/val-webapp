@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
         next: data => {
           this.storageService.saveUser(data);
           this.isLoggedIn = true;
+          this.storageService.emitChange(true);
           this.router.navigate([''])
         },
         error: err => {

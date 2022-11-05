@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 const USER_KEY = 'auth-user';
 
@@ -7,6 +8,13 @@ const USER_KEY = 'auth-user';
 })
 export class StorageService {
   constructor() {}
+
+  private emitChanges = new Subject<boolean>();
+  changeEmitted$ = this.emitChanges.asObservable();
+
+  emitChange(change: boolean) {
+    this.emitChanges.next(change);
+  }
 
   clean(): void {
     window.sessionStorage.clear();
