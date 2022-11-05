@@ -19,7 +19,13 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
 import { PlayersComponent } from './components/players/players.component';
 import { PlayerDetailsComponent } from './components/player-details/player-details.component';
 import { MatGridListModule } from '@angular/material/grid-list'
-import { MatCardModule} from '@angular/material/card'
+import { MatCardModule} from '@angular/material/card';
+import { LoginComponent } from './components/login/login.component'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import { httpInterceptorProviders } from './helpers/http.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -32,6 +38,8 @@ import { MatCardModule} from '@angular/material/card'
     TeamDetailsComponent,
     PlayersComponent,
     PlayerDetailsComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +53,14 @@ import { MatCardModule} from '@angular/material/card'
     MatTableModule,
     MatListModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

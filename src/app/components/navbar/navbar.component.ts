@@ -25,4 +25,12 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['players'])
   }
 
+  openLogin(): void {
+    this.router.navigate(['login'])
+  }
+
+  openRegister(): void {
+    this.router.navigate(['register'])
+  }
+
 }
