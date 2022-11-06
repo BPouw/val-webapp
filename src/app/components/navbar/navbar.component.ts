@@ -46,11 +46,9 @@ export class NavbarComponent implements OnInit {
   }
 
   signOut(): void {
-    console.log("komen we hier?")
     this.storageService.clean();
     this.authService.logout();
     this.signedIn = false;
-    console.log(this.signedIn);
     this.router.navigate(['login'])
   }
 }
