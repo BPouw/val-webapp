@@ -1,10 +1,10 @@
   <div class="header">
-    Valorant Players
+    <p>Valorant Players</p>
+    <a mat-raised-button color="accent" (click)="createPlayer()">Create</a>
   </div>
   
-  <div class="playerscontainer">
         <div class="players">
-            <mat-grid-list cols="5" rowHeight="11rem">
+            <mat-grid-list cols="{{columns}}" rowHeight="11rem">
                 <mat-grid-tile *ngFor="let player of players">
 
                     <mat-card class="card" (click)="playerDetails(player)">
@@ -25,4 +25,3 @@
                 </mat-grid-tile>
             </mat-grid-list>
         </div>
- </div>

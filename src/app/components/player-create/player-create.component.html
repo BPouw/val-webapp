@@ -1,0 +1,28 @@
+<div class="form-container">
+    <h3>Create new player</h3>
+    <mat-form-field>
+        <mat-label>Gamertag</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-select-country></mat-select-country>
+    <mat-form-field>
+        <mat-label>Full name</mat-label>
+        <input matInput>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Earnings</mat-label>
+        <input matInput type="number">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Agents</mat-label>
+        <mat-select multiple>
+          <mat-option *ngFor="let agent of agents" [value]="agent">{{agent}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Team</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let team of teams" [value]="team.teamname">{{team.teamname}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>

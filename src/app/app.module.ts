@@ -26,6 +26,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { httpInterceptorProviders } from './helpers/http.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PlayerCreateComponent } from './components/player-create/player-create.component';
+import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -40,6 +44,7 @@ import { RegisterComponent } from './components/register/register.component';
     PlayerDetailsComponent,
     LoginComponent,
     RegisterComponent,
+    PlayerCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,10 @@ import { RegisterComponent } from './components/register/register.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatSelectCountryModule.forRoot('en'),
+    MatSelectModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
