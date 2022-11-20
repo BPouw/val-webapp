@@ -23,8 +23,7 @@ export class MatchesComponent implements OnInit {
 
   ngOnInit(): void {
     this.matchService.batch(this.batchSize, this.batchNmbr).subscribe(data => {
-      this.matches = this.matches.concat(data)
-      console.log(data)      
+      this.matches = this.matches.concat(data)    
     })
 
 

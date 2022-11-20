@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
 import { PlayerService } from 'src/app/services/player.service';
+import { PlayerUpdateComponent } from '../player-update/player-update.component';
 
 @Component({
   selector: 'app-player-details',
@@ -15,8 +18,9 @@ export class PlayerDetailsComponent implements OnInit {
   team!: Team;
   agents: String[] = []
   lowAgents: String[] = []
+  playerid?: string = ''
 
-  constructor(private activatedRoute: ActivatedRoute, private playerService: PlayerService, private router: Router) { }
+  constructor(private activatedRoute: ActivatedRoute, private playerService: PlayerService, private router: Router, private snackbar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -24,11 +28,11 @@ export class PlayerDetailsComponent implements OnInit {
         this.player = data;
         this.team = this.player.team;
         this.agents = this.player.agents
+        this.playerid = this.player._id
         for(let agent of this.agents) {
           let lowagent = agent.toLowerCase()
           this.lowAgents.push(lowagent)
         }
-        console.log(this.lowAgents)
       })
     })
   }
@@ -36,5 +40,20 @@ export class PlayerDetailsComponent implements OnInit {
   teamDetails(team: Team): void {
     this.router.navigate(["teams", team._id])
   }
+
+  update(): void {
+    const dialogRef = this.dialog.open(PlayerUpdateComponent, {
+      data: this.player
+    });
+  };
+
+  delete(): void {
+    this.playerid && this.playerService.delete(this.playerid).subscribe();
+    this.router.navigate(["players"]);
+    this.snackbar.open(`Player ${this.player.gamertag} successfully deleted`, '', {
+      duration: 3000
+    })
+  };
+
 
 }

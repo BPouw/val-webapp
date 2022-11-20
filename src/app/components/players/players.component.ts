@@ -21,7 +21,6 @@ export class PlayersComponent implements OnInit {
   ngOnInit(): void {
     this.playerService.list().subscribe(data => {
       this.players = data;
-      console.log(this.players)
     })
   }
 
@@ -54,8 +53,10 @@ export class PlayersComponent implements OnInit {
   createPlayer() {
     const dialogRef = this.dialog.open(PlayerCreateComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+    dialogRef.afterClosed().subscribe(() => {
+      this.playerService.list().subscribe(data => {
+        this.players = data;
+      })
     })
   }
 

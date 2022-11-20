@@ -30,6 +30,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PlayerCreateComponent } from './components/player-create/player-create.component';
 import { MatSelectCountryModule } from '@angular-material-extensions/select-country';
 import { MatSelectModule } from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { PlayerUpdateComponent } from './components/player-update/player-update.component';
+
 
 
 @NgModule({
@@ -44,7 +47,8 @@ import { MatSelectModule } from '@angular/material/select';
     PlayerDetailsComponent,
     LoginComponent,
     RegisterComponent,
-    PlayerCreateComponent
+    PlayerCreateComponent,
+    PlayerUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,8 @@ import { MatSelectModule } from '@angular/material/select';
     HttpClientModule,
     MatDialogModule,
     MatSelectCountryModule.forRoot('en'),
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

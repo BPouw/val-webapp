@@ -25,7 +25,6 @@ export class TeamDetailsComponent implements OnInit {
         this.team = data;
         this.players = this.team.players
         this.matches = this.team.matches
-        console.log(this.matches)
       })
     })
   }

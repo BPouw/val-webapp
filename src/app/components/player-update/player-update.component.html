@@ -1,5 +1,5 @@
 <div class="form-container" [formGroup]="newPlayer">
-    <h3>Create new player</h3>
+    <h3>Update</h3>
     <mat-form-field>
         <mat-label>Gamertag</mat-label>
         <input matInput formControlName="gamertag">
@@ -25,6 +25,6 @@
             <mat-option *ngFor="let team of teams" [value]="team._id">{{team.teamname}}</mat-option>
         </mat-select>
       </mat-form-field>
-      <a mat-raised-button color="accent" [mat-dialog-close] (click)="submit()">Create</a>
+      <a mat-raised-button color="accent" [mat-dialog-close] (click)="submit()">Update</a>
 
 </div>

@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Country } from '@angular-material-extensions/select-country';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Agent } from 'src/app/enums/agent.enum';
 import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
 import { PlayerService } from 'src/app/services/player.service';
 import { TeamService } from 'src/app/services/team.service';
-import {Country} from '@angular-material-extensions/select-country';
-import { HttpClient } from '@angular/common/http';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-player-create',
-  templateUrl: './player-create.component.html',
-  styleUrls: ['./player-create.component.css']
+  selector: 'app-player-update',
+  templateUrl: './player-update.component.html',
+  styleUrls: ['./player-update.component.css']
 })
-export class PlayerCreateComponent implements OnInit {
+export class PlayerUpdateComponent implements OnInit {
 
   public teams: Team[] = [];
+  public player: Player | undefined;
   public agents = Object.values(Agent).filter(x => typeof x === "string")
+  @Inject(MAT_DIALOG_DATA) public data: Player | undefined;
 
   selectedAgents: string[] = []
 
@@ -28,7 +30,7 @@ export class PlayerCreateComponent implements OnInit {
     callingCode: ''
   };
 
-  constructor(private teamService: TeamService, private playerService: PlayerService, private http: HttpClient) { }
+  constructor(private teamService: TeamService, private playerService: PlayerService) { }
 
   newPlayer = new FormGroup({
     gamertag: new FormControl('', {nonNullable: true}),
@@ -68,4 +70,5 @@ export class PlayerCreateComponent implements OnInit {
     
     }
   }
+
 }

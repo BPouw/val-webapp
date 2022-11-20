@@ -22,8 +22,6 @@ export class EntityService<T extends Entity> {
 		return this.http
 			.post<T>(endpoint, item, { ...options, ...httpOptions })
 			.pipe(
-				// tap(console.log),
-				// map((response: any) => response.result),
 				catchError(this.handleError)
 			);
 	}
