@@ -8,6 +8,8 @@ import { PlayersComponent } from './components/player/players/players.component'
 import { PlayerDetailsComponent } from './components/player/player-details/player-details.component';
 import { LoginComponent } from './components/shared/login/login.component';
 import { RegisterComponent } from './components/shared/register/register.component';
+import { MapsComponent } from './components/map/maps/maps.component';
+import { MapDetailsComponent } from './components/map/map-details/map-details.component';
 
 const routes: Routes = [
   {
@@ -37,6 +39,14 @@ const routes: Routes = [
   {
     path: 'players/:id',
     component: PlayerDetailsComponent
+  },
+  {
+    path: 'maps',
+    component: MapsComponent,
+  },
+  {
+    path: 'maps/:id',
+    component: MapDetailsComponent
   },
   {
     path: 'login',

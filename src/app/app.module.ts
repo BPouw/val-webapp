@@ -34,6 +34,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { PlayerUpdateComponent } from './components/player/player-update/player-update.component';
 import { TeamCreateComponent } from './components/team/team-create/team-create.component';
 import { TeamUpdateComponent } from './components/team/team-update/team-update.component';
+import { MatchCreateComponent } from './components/match/match-create/match-create.component';
+import { MatchUpdateComponent } from './components/match/match-update/match-update.component';
+import { MapsComponent } from './components/map/maps/maps.component';
+import { MapDetailsComponent } from './components/map/map-details/map-details.component';
+import { MapCreateComponent } from './components/map/map-create/map-create.component';
+import { MapUpdateComponent } from './components/map/map-update/map-update.component';
+import { MatCheckboxModule} from '@angular/material/checkbox'
 
 @NgModule({
   declarations: [
@@ -51,6 +58,12 @@ import { TeamUpdateComponent } from './components/team/team-update/team-update.c
     PlayerUpdateComponent,
     TeamCreateComponent,
     TeamUpdateComponent,
+    MatchCreateComponent,
+    MatchUpdateComponent,
+    MapsComponent,
+    MapDetailsComponent,
+    MapCreateComponent,
+    MapUpdateComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +86,8 @@ import { TeamUpdateComponent } from './components/team/team-update/team-update.c
     MatDialogModule,
     MatSelectCountryModule.forRoot('en'),
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

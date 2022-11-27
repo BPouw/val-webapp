@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Data, Router} from '@angular/router'
 import { Match } from 'src/app/models/match.model';
 import { Player } from 'src/app/models/player.model';
 import { MatchService} from 'src/app/services/match.service'
+import { StorageService } from 'src/app/services/storage.service';
+import { MatchCreateComponent } from '../match-create/match-create.component';
 
 @Component({
   selector: 'app-matches',
@@ -12,39 +15,31 @@ import { MatchService} from 'src/app/services/match.service'
 
 export class MatchesComponent implements OnInit {
 
-  matches: Match[] = []
-  columnsToDisplay = ['date', 'matchname', 'map', 'teams', 'score', 'winner']
-  selectedId = 0
+  public matches: Match[] = []
+  public columnsToDisplay = ['date', 'matchname', 'map', 'teams', 'score', 'winner']
+  public isLoggedIn: boolean = false;
 
-  batchSize = 10
-  batchNmbr = 0
-
-  constructor(private matchService: MatchService, private router: Router) { }
+  constructor(private matchService: MatchService, private router: Router, private storageService: StorageService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.matchService.batch(this.batchSize, this.batchNmbr).subscribe(data => {
-      this.matches = this.matches.concat(data)    
+    this.matchService.list().subscribe(data => {
+      this.matches = data;
     })
+    this.isLoggedIn = this.storageService.isLoggedIn();
 
-
-  }
-
-  loadNextBatch(): void {
-    this.batchNmbr += 1
-    this.matchService.batch(this.batchSize, this.batchNmbr).subscribe(data => {
-      this.matches = this.matches.concat(data)
-
-    })
-  }
-
-  ngOnDestroy(): void {
-    
   }
 
   matchDetails(match: Match) {
     this.router.navigate(['matches', match._id])
   }
 
+  createMatch(): void {
+    const dialogRef = this.dialog.open(MatchCreateComponent);
 
-
+    dialogRef.afterClosed().subscribe(() => {
+      this.matchService.list().subscribe(data => {
+        this.matches = data;
+      })
+    })
+  }
 }

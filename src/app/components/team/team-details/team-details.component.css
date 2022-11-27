@@ -111,3 +111,6 @@ mat-list-item {
     cursor: pointer;
   }
 
+  .separator {
+    padding: 10px;
+}

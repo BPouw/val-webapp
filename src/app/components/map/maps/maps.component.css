@@ -1,0 +1,50 @@
+.header {
+    background-color: #673ab7;
+    color: white;
+    font-size: 35px;
+    text-align: center;
+    padding: 60px;
+    font-weight: 500;
+}
+
+.headerbutton {
+  margin-top: 10px;
+}
+
+.mapimg {
+  width: 355px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  filter: grayscale(100)
+}
+
+.mapimg:hover {
+  filter: grayscale(0)
+}
+
+.mapcontainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mapcard {
+  border-radius: 10px;
+  border-color: black;
+  background-color: #673ab7;
+  margin: 30px;
+  border-radius: 20px;
+  width: 355px;
+}
+
+.mapcard:hover {
+  cursor: pointer;
+}
+
+.mapcard h1 {
+  text-align: center;
+  color: white;
+  font-weight: 400;
+  margin: auto;
+}

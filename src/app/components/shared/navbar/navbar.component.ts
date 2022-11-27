@@ -37,6 +37,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['players'])
   }
 
+  openMaps(): void {
+    this.router.navigate(['maps'])
+  }
+
   openLogin(): void {
     this.router.navigate(['login'])
   }
