@@ -5,6 +5,7 @@ import { Player } from 'src/app/models/player.model';
 import { PlayerService } from 'src/app/services/player.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PlayerCreateComponent } from '../player-create/player-create.component';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-players',
@@ -15,13 +16,15 @@ export class PlayersComponent implements OnInit {
 
   players: Player[] = [];
   columns: number = 5;
+  isLoggedIn = false;
 
-  constructor(private playerService: PlayerService, private router: Router, private breakpointObserver: BreakpointObserver, public dialog: MatDialog) { }
+  constructor(private playerService: PlayerService, private router: Router, private breakpointObserver: BreakpointObserver, public dialog: MatDialog, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.playerService.list().subscribe(data => {
       this.players = data;
     })
+    this.isLoggedIn = this.storageService.isLoggedIn();
   }
 
   ngAfterViewInit() {

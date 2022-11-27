@@ -7,6 +7,8 @@ import { PlayerService } from 'src/app/services/player.service';
 import { TeamService } from 'src/app/services/team.service';
 import {Country} from '@angular-material-extensions/select-country';
 import { HttpClient } from '@angular/common/http';
+import { StorageService } from 'src/app/services/storage.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-player-create',
@@ -17,6 +19,7 @@ export class PlayerCreateComponent implements OnInit {
 
   public teams: Team[] = [];
   public agents = Object.values(Agent).filter(x => typeof x === "string")
+  private user: any;
 
   selectedAgents: string[] = []
 
@@ -28,7 +31,7 @@ export class PlayerCreateComponent implements OnInit {
     callingCode: ''
   };
 
-  constructor(private teamService: TeamService, private playerService: PlayerService, private http: HttpClient) { }
+  constructor(private teamService: TeamService, private playerService: PlayerService, private http: HttpClient, private storageService: StorageService) { }
 
   newPlayer = new FormGroup({
     gamertag: new FormControl('', {nonNullable: true}),
@@ -43,6 +46,7 @@ export class PlayerCreateComponent implements OnInit {
     this.teamService.list().subscribe(data => {
       this.teams = data;
       })
+      this.user = this.storageService.getUser();
   }
 
   submit(): void {
@@ -62,6 +66,7 @@ export class PlayerCreateComponent implements OnInit {
         earnings: earnings,
         agents: this.selectedAgents,
         team: team,
+        author: this.user.id
       }
       this.playerService.create(player).subscribe();
     

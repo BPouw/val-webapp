@@ -1,5 +1,6 @@
 import { Entity } from "./entity";
 import { Team } from "./team.model";
+import { User } from "./user.model";
 
 export class Player extends Entity {
     gamertag!: string
@@ -9,4 +10,5 @@ export class Player extends Entity {
     country!: string
     team!: Team
     agents!: string[]
+    author: User | undefined
 }

@@ -21,6 +21,7 @@ export class PlayerDetailsComponent implements OnInit {
   agents: String[] = []
   lowAgents: String[] = []
   playerid?: string = ''
+  user: any;
 
   constructor(private activatedRoute: ActivatedRoute, private playerService: PlayerService, private router: Router, private snackbar: MatSnackBar, private dialog: MatDialog, private storageService: StorageService) { }
 
@@ -38,8 +39,7 @@ export class PlayerDetailsComponent implements OnInit {
       })
     })
 
-    let user = this.storageService.getUser();
-    console.log(user)
+    this.user = this.storageService.getUser();
   }
 
   teamDetails(team: Team): void {

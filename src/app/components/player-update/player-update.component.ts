@@ -65,6 +65,7 @@ export class PlayerUpdateComponent implements OnInit {
         earnings: earnings,
         agents: this.selectedAgents,
         team: team,
+        author: this.data.author
       }
       this.playerService.update(player).subscribe();
     
