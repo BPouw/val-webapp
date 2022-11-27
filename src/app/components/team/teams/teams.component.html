@@ -1,15 +1,13 @@
 <div class="header">
-    Valorant Teams
-</div>
-<!-- 
-<div>
-    <img src="https://playvalorant.com/static/agents-group-31d7ce5a3637e45d8b25d2fd03159e6c.png"/> 
-</div> -->
+    <p>Valorant teams</p>
+    <div *ngIf="this.isLoggedIn">
+        <a class="headerbutton" mat-raised-button color="accent" (click)="createTeam()">Create</a>
+    </div>
+  </div>
 
 <div class="container">
-    <img src="https://playvalorant.com/static/agents-group-31d7ce5a3637e45d8b25d2fd03159e6c.png"/> 
     <mat-list style="flex:1">
-        <mat-list-item style="padding:10px 0;"class="team"(click)="teamDetails(team)"  *ngFor="let team of teams">
+        <mat-list-item style="padding:10px 0; margin-left:100px;"class="team"(click)="teamDetails(team)"  *ngFor="let team of teams">
             <img style="height: 130px; width: 130px; border-radius: 0; padding: 20px;" src="{{team.logo}} " alt="">
             <div style="font-weight: bold; font-size: 30px; padding: 40px 10px; font-style: italic;">{{team.teamname}}</div>
             <div style="font-size: 15px; padding: 40px 10px;" class='country'>| {{team.country}}</div>

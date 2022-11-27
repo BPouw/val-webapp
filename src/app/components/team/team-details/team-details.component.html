@@ -7,6 +7,13 @@
         </div>
     </div>
     <div class="country">{{team.country}}</div>
+    <div *ngIf="this.user.id === this.team.author?._id">
+        <div class="buttons">
+            <a mat-raised-button color="accent" (click)="update()">Update</a>
+            <div class="separator"></div>
+            <a mat-raised-button color="primary"class="delete" (click)="delete()">Delete</a>
+        </div>
+    </div>
 </div>
 
 <div class="matchnplayers">

@@ -1,6 +1,7 @@
 
 import { Entity } from "./entity";
 import { Team } from "./team.model";
+import { User } from "./user.model";
 
 export class Match extends Entity {
     name!: string
@@ -11,4 +12,5 @@ export class Match extends Entity {
     team2!: Team
     resultteam1?: number
     resultteam2?: number
+    author: User| undefined
 }

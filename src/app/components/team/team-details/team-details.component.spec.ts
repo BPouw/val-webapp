@@ -18,6 +18,5 @@ describe('TeamDetailsComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

@@ -18,6 +18,5 @@ describe('TeamsComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

@@ -18,6 +18,5 @@ describe('PlayerUpdateComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });

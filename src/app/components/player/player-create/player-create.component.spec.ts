@@ -18,6 +18,5 @@ describe('PlayerCreateComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
   });
 });
