@@ -40,7 +40,6 @@ export class PlayersComponent implements OnInit {
           if (state.matches) {
               this.columns = 1;
           } else {
-            this.columns = 3;
           }
         })
 }

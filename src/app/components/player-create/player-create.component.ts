@@ -57,13 +57,12 @@ export class PlayerCreateComponent implements OnInit {
         _id: undefined,
         gamertag: gamertag,
         country: country.name,
-        picture: "",
+        picture: "https://www.vlr.gg/img/base/ph/sil.png",
         fullname: name,
         earnings: earnings,
         agents: this.selectedAgents,
         team: team,
       }
-      console.log(this.selectedAgents);
       this.playerService.create(player).subscribe();
     
     }

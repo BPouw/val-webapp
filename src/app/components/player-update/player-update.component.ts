@@ -16,28 +16,28 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 export class PlayerUpdateComponent implements OnInit {
 
   public teams: Team[] = [];
-  public player: Player | undefined;
   public agents = Object.values(Agent).filter(x => typeof x === "string")
-  @Inject(MAT_DIALOG_DATA) public data: Player | undefined;
 
   selectedAgents: string[] = []
 
    public defaultValue: Country = {
-    name: 'Deutschland',
-    alpha2Code: 'DE',
-    alpha3Code: 'DEU',
-    numericCode: '276',
-    callingCode: ''
-  };
+     name: this.data.country,
+     alpha2Code: '',
+     alpha3Code: '',
+     numericCode: '',
+     callingCode: ''
+   };
 
-  constructor(private teamService: TeamService, private playerService: PlayerService) { }
+   public defaultTeam: Team = this.data.team;
+
+  constructor(private teamService: TeamService, private playerService: PlayerService, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   newPlayer = new FormGroup({
-    gamertag: new FormControl('', {nonNullable: true}),
-    name: new FormControl<string>('', Validators.required),
-    agents: new FormControl(),
-    earnings: new FormControl<number>(0),
-    team: new FormControl(this.teams[1]),
+    gamertag: new FormControl(this.data.gamertag),
+    name: new FormControl<string>(this.data.fullname),
+    agents: new FormControl(this.data.agents),
+    earnings: new FormControl<number>(this.data.earnings),
+    team: new FormControl(this.defaultTeam),
     country: new FormControl<Country>(this.defaultValue),
   });
 
@@ -46,6 +46,7 @@ export class PlayerUpdateComponent implements OnInit {
       this.teams = data;
       })
   }
+  
 
   submit(): void {
     if (this.newPlayer.valid) {
@@ -56,17 +57,16 @@ export class PlayerUpdateComponent implements OnInit {
       let country = this.newPlayer.value.country || this.defaultValue
 
       let player: Player = {
-        _id: undefined,
+        _id: this.data._id,
         gamertag: gamertag,
         country: country.name,
-        picture: "",
+        picture: this.data.picture,
         fullname: name,
         earnings: earnings,
         agents: this.selectedAgents,
         team: team,
       }
-      console.log(this.selectedAgents);
-      this.playerService.create(player).subscribe();
+      this.playerService.update(player).subscribe();
     
     }
   }

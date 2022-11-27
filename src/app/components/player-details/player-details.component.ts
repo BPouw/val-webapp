@@ -5,7 +5,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
 import { PlayerService } from 'src/app/services/player.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { PlayerUpdateComponent } from '../player-update/player-update.component';
+
 
 @Component({
   selector: 'app-player-details',
@@ -20,7 +22,7 @@ export class PlayerDetailsComponent implements OnInit {
   lowAgents: String[] = []
   playerid?: string = ''
 
-  constructor(private activatedRoute: ActivatedRoute, private playerService: PlayerService, private router: Router, private snackbar: MatSnackBar, private dialog: MatDialog) { }
+  constructor(private activatedRoute: ActivatedRoute, private playerService: PlayerService, private router: Router, private snackbar: MatSnackBar, private dialog: MatDialog, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -35,6 +37,9 @@ export class PlayerDetailsComponent implements OnInit {
         }
       })
     })
+
+    let user = this.storageService.getUser();
+    console.log(user)
   }
 
   teamDetails(team: Team): void {
