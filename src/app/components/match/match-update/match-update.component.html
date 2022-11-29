@@ -1,1 +1,67 @@
-<p>match-update works!</p>
+<div class="form-container" [formGroup]="newMatch">
+  <h3>Create match</h3>
+
+  <mat-form-field>
+    <mat-label>Match name</mat-label>
+    <input matInput formControlName="matchname" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Match date</mat-label>
+    <div class="date-field">
+      <input matInput [matDatepicker]="picker" formControlName="date" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Map</mat-label>
+    <mat-select formControlName="map">
+      <mat-option *ngFor="let map of maps" [value]="map._id">{{
+        map.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="vertical-container">
+    <div class="leftdiv">
+      <mat-form-field>
+        <mat-label>Team 1</mat-label>
+        <mat-select formControlName="team1">
+          <mat-option *ngFor="let team of teams" [value]="team._id">{{
+            team.teamname
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Score</mat-label>
+        <input matInput type="number" formControlName="scoreteam1" />
+      </mat-form-field>
+    </div>
+
+    <div class="rightdiv">
+      <mat-form-field>
+        <mat-label>Team 2</mat-label>
+        <mat-select formControlName="team2">
+          <mat-option *ngFor="let team of teams" [value]="team._id">{{
+            team.teamname
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Score</mat-label>
+        <input matInput type="number" formControlName="scoreteam2" />
+      </mat-form-field>
+    </div>
+  </div>
+
+  <a mat-raised-button color="accent" [mat-dialog-close] (click)="submit()"
+    >Update</a
+  >
+</div>

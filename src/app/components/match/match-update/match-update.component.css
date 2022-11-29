@@ -1,0 +1,24 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.vertical-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.leftdiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightdiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-field {
+  display: flex;
+  flex-direction: row;
+}

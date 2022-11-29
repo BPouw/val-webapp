@@ -62,12 +62,9 @@ export class TeamDetailsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(() => {
-      this.activatedRoute.params.subscribe((params: Params) => {
-        this.teamService.read(params['id']).subscribe((data) => {
-          this.team = data;
-          this.players = this.team.players;
-          this.matches = this.team.matches;
-        });
+      this.ngOnInit();
+      this.snackbar.open(`Team successfully updated`, '', {
+        duration: 3000,
       });
     });
   }

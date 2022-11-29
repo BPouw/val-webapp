@@ -72,6 +72,12 @@ export class MatchDetailsComponent implements OnInit {
     const dialogRef = this.dialog.open(MatchUpdateComponent, {
       data: this.match,
     });
+    dialogRef.afterClosed().subscribe(() => {
+      this.getMatchDetails(this.matchId);
+      this.snackbar.open(`Match successfully updated`, '', {
+        duration: 3000,
+      });
+    });
   }
 
   delete(): void {

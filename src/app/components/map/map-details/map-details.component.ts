@@ -39,6 +39,12 @@ export class MapDetailsComponent implements OnInit {
     const dialogRef = this.dialog.open(MapUpdateComponent, {
       data: this.map,
     });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+      this.snackbar.open(`Map successfully updated`, '', {
+        duration: 3000,
+      });
+    });
   }
 
   delete(): void {

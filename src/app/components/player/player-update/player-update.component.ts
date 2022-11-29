@@ -40,7 +40,7 @@ export class PlayerUpdateComponent implements OnInit {
     name: new FormControl<string>(this.data.fullname),
     agents: new FormControl(this.data.agents),
     earnings: new FormControl<number>(this.data.earnings),
-    team: new FormControl(this.defaultTeam),
+    team: new FormControl(this.data.team._id),
     country: new FormControl<Country>(this.defaultValue),
   });
 

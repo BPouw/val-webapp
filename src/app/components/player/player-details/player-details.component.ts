@@ -55,6 +55,12 @@ export class PlayerDetailsComponent implements OnInit {
     const dialogRef = this.dialog.open(PlayerUpdateComponent, {
       data: this.player,
     });
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+      this.snackbar.open(`Player successfully updated`, '', {
+        duration: 3000,
+      });
+    });
   }
 
   delete(): void {
