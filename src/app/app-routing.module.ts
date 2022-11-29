@@ -14,23 +14,23 @@ import { MapDetailsComponent } from './components/map/map-details/map-details.co
 const routes: Routes = [
   {
     path: '',
-    component: MatchesComponent
+    component: MatchesComponent,
   },
   {
     path: 'matches',
-    component: MatchesComponent
+    component: MatchesComponent,
   },
   {
     path: 'matches/:id',
-    component: MatchDetailsComponent
+    component: MatchDetailsComponent,
   },
   {
     path: 'teams',
-    component: TeamsComponent
+    component: TeamsComponent,
   },
   {
     path: 'teams/:id',
-    component: TeamDetailsComponent
+    component: TeamDetailsComponent,
   },
   {
     path: 'players',
@@ -38,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: 'players/:id',
-    component: PlayerDetailsComponent
+    component: PlayerDetailsComponent,
   },
   {
     path: 'maps',
@@ -46,21 +46,20 @@ const routes: Routes = [
   },
   {
     path: 'maps/:id',
-    component: MapDetailsComponent
+    component: MapDetailsComponent,
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',
-    component: RegisterComponent
-  }
-    
+    component: RegisterComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

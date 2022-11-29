@@ -1,16 +1,42 @@
 <div class="header">
-    <p>Valorant teams</p>
-    <div *ngIf="this.isLoggedIn">
-        <a class="headerbutton" mat-raised-button color="accent" (click)="createTeam()">Create</a>
-    </div>
+  <p>Valorant teams</p>
+  <div *ngIf="this.isLoggedIn">
+    <a
+      class="headerbutton"
+      mat-raised-button
+      color="accent"
+      (click)="createTeam()"
+      >Create</a
+    >
   </div>
+</div>
 
 <div class="container">
-    <mat-list style="flex:1">
-        <mat-list-item style="padding:10px 0; margin-left:100px;"class="team"(click)="teamDetails(team)"  *ngFor="let team of teams">
-            <img style="height: 130px; width: 130px; border-radius: 0; padding: 20px;" src="{{team.logo}} " alt="">
-            <div style="font-weight: bold; font-size: 30px; padding: 40px 10px; font-style: italic;">{{team.teamname}}</div>
-            <div style="font-size: 15px; padding: 40px 10px;" class='country'>| {{team.country}}</div>
-        </mat-list-item>
-    </mat-list>
+  <mat-list style="flex: 1">
+    <mat-list-item
+      style="padding: 10px 0; margin-left: 100px"
+      class="team"
+      (click)="teamDetails(team)"
+      *ngFor="let team of teams"
+    >
+      <img
+        style="height: 130px; width: 130px; border-radius: 0; padding: 20px"
+        src="{{ team.logo }} "
+        alt=""
+      />
+      <div
+        style="
+          font-weight: bold;
+          font-size: 30px;
+          padding: 40px 10px;
+          font-style: italic;
+        "
+      >
+        {{ team.teamname }}
+      </div>
+      <div style="font-size: 15px; padding: 40px 10px" class="country">
+        | {{ team.country }}
+      </div>
+    </mat-list-item>
+  </mat-list>
 </div>

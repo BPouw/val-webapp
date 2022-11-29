@@ -8,15 +8,13 @@ describe('TeamDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeamDetailsComponent ]
-    })
-    .compileComponents();
+      declarations: [TeamDetailsComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TeamDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-  });
+  it('should create', () => {});
 });

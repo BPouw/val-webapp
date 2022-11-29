@@ -8,39 +8,39 @@ import { TeamService } from 'src/app/services/team.service';
 @Component({
   selector: 'app-team-create',
   templateUrl: './team-create.component.html',
-  styleUrls: ['./team-create.component.css']
+  styleUrls: ['./team-create.component.css'],
 })
-
 export class TeamCreateComponent implements OnInit {
-
   private defaultValue: Country = {
     name: 'Deutschland',
     alpha2Code: 'DE',
     alpha3Code: 'DEU',
     numericCode: '276',
-    callingCode: ''
+    callingCode: '',
   };
 
   private user: any;
 
-  constructor(private storageService: StorageService, private teamService: TeamService) { }
+  constructor(
+    private storageService: StorageService,
+    private teamService: TeamService
+  ) {}
 
   ngOnInit(): void {
     this.user = this.storageService.getUser();
   }
-  
 
   newTeam = new FormGroup({
     teamname: new FormControl(''),
     country: new FormControl<Country>(this.defaultValue),
-    ranking: new FormControl<number>(0)
-  })
+    ranking: new FormControl<number>(0),
+  });
 
   submit(): void {
     if (this.newTeam.valid) {
-      let teamname = this.newTeam.value.teamname || ""
-      let country = this.newTeam.value.country?.name || this.defaultValue.name
-      let ranking = this.newTeam.value.ranking || 0
+      let teamname = this.newTeam.value.teamname || '';
+      let country = this.newTeam.value.country?.name || this.defaultValue.name;
+      let ranking = this.newTeam.value.ranking || 0;
 
       let team: Team = {
         _id: undefined,
@@ -51,11 +51,10 @@ export class TeamCreateComponent implements OnInit {
         logo: 'https://www.vlr.gg/img/vlr/tmp/vlr.png',
         players: [],
         matches: [],
-        tournaments: []
-      }
+        tournaments: [],
+      };
 
       this.teamService.create(team).subscribe();
     }
   }
-
 }

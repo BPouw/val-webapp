@@ -1,60 +1,73 @@
 <body>
-    <div class="matchcontainer">
+  <div class="matchcontainer">
+    <h1 class="title">{{ match.name }}</h1>
+    <h2 class="date">{{ match.date | date : "shortDate" }}</h2>
 
+    <div class="resultcontainer">
+      <div class="teamcontainer1">
+        <h2 (click)="teamDetails(match.team1)" class="team">
+          {{ match.team1.teamname }}
+        </h2>
+        <img src="{{ match.team1.logo }}" alt="" />
+      </div>
 
-        <h1 class="title">{{match.name}}</h1>
-        <h2 class="date">{{match.date | date:'shortDate'}}</h2>
+      <div class="scorecontainer">
+        {{ match.resultteam1 }} - {{ match.resultteam2 }}
+      </div>
 
-
-        <div class="resultcontainer">
-
-            <div class="teamcontainer1">
-                <h2 (click)="teamDetails(match.team1)" class="team">{{match.team1.teamname}}</h2>
-                <img src="{{match.team1.logo}}" alt="">
-            </div>
-
-            <div class="scorecontainer">
-                {{match.resultteam1}} - {{match.resultteam2}}
-            </div>
-
-            <div class="teamcontainer2">
-                <img src="{{match.team2.logo}}" alt="">
-                <h2 (click)="teamDetails(match.team2)" class="team">{{match.team2.teamname}}</h2>
-            </div>
-
-        </div>
-
-        <h1 class="map">{{match.map}}</h1>
-
-        <h1 class="winner">Winner: {{match.winner.teamname}}</h1>
-        <h1></h1>
-
-
+      <div class="teamcontainer2">
+        <img src="{{ match.team2.logo }}" alt="" />
+        <h2 (click)="teamDetails(match.team2)" class="team">
+          {{ match.team2.teamname }}
+        </h2>
+      </div>
     </div>
 
-    <div class="players">
+    <h1 class="map" (click)="mapDetails(match.map)">{{ match.map.name }}</h1>
 
-        <div class="playersContainer">
-            <div class="playersteam">
-                <h1>{{match.team1.teamname}}</h1>
-                <mat-list role="list">
-                    <mat-list-item (click)="playerDetails(player)" *ngFor="let player of playersteam1">
-                        <img matListAvatar src="{{player.picture}}" alt="">
-                        <div matLine> {{ player.gamertag}}</div>
-                    </mat-list-item>
-                </mat-list>
-            </div>
+    <h1 class="winner">Winner: {{ match.winner.teamname }}</h1>
+    <h1></h1>
 
-            <div class="playersteam">
-                <h1>{{match.team2.teamname}}</h1>
-                <mat-list role="list">
-                    <mat-list-item (click)="playerDetails(player)" *ngFor="let player of playersteam2">
-                        <img matListAvatar src="{{player.picture}}" alt="">
-                        <div matLine> {{ player.gamertag}}</div>
-                    </mat-list-item>
-                </mat-list>
-            </div>
-        </div>
-
+    <div *ngIf="this.user.id === this.match.author?._id">
+      <div class="buttons">
+        <a mat-raised-button color="accent" (click)="update()">Update</a>
+        <div class="separator"></div>
+        <a mat-raised-button color="primary" class="delete" (click)="delete()"
+          >Delete</a
+        >
+      </div>
     </div>
+  </div>
+
+  <div class="players">
+    <div class="playersContainer">
+      <div class="playersteam">
+        <h1>{{ match.team1.teamname }}</h1>
+        <mat-list role="list">
+          <mat-list-item
+            class="player"
+            (click)="playerDetails(player)"
+            *ngFor="let player of playersteam1"
+          >
+            <img matListAvatar src="{{ player.picture }}" alt="" />
+            <div matLine>{{ player.gamertag }}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div class="playersteam">
+        <h1>{{ match.team2.teamname }}</h1>
+        <mat-list role="list">
+          <mat-list-item
+            class="player"
+            (click)="playerDetails(player)"
+            *ngFor="let player of playersteam2"
+          >
+            <img matListAvatar src="{{ player.picture }}" alt="" />
+            <div matLine>{{ player.gamertag }}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
 </body>

@@ -1,52 +1,52 @@
 .mapheader {
-    display: flex;
-    flex-direction: column;
-    background-color: #673ab7;
-    justify-content: center;
-    text-align: center;
-    color: white;
+  display: flex;
+  flex-direction: column;
+  background-color: #673ab7;
+  justify-content: center;
+  text-align: center;
+  color: white;
 }
 
 .mapheader p {
-    font-size: 35px;
-    font-weight: 500;
-    padding-top: 60px;
-    padding-bottom: 20px;
+  font-size: 35px;
+  font-weight: 500;
+  padding-top: 60px;
+  padding-bottom: 20px;
 }
 
 .description {
-    width: 350px;
-    align-self: center;
+  width: 350px;
+  align-self: center;
 }
 
 .image {
-    display: flex;
-    justify-content: center;
-    padding-top: 50px;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
 }
 
 img {
-    border-radius:30px;
-    width: 800px;
+  border-radius: 30px;
+  width: 800px;
 }
 
 .active {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
 }
 
 .active p {
-    padding: 10px;
+  padding: 10px;
 }
 
 .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
 }
 
 .separator {
-    padding: 10px;
+  padding: 10px;
 }

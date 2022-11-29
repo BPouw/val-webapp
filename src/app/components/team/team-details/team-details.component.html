@@ -1,70 +1,78 @@
 <div class="infocontainer">
-    <div class="logoname">
-        <img src="{{team.logo}}" alt="">
-        <div class="rank">
-            <h1>{{team.teamname}}</h1>
-            <h2>RANK: {{team.ranking}}</h2>
-        </div>
+  <div class="logoname">
+    <img src="{{ team.logo }}" alt="" />
+    <div class="rank">
+      <h1>{{ team.teamname }}</h1>
+      <h2>RANK: {{ team.ranking }}</h2>
     </div>
-    <div class="country">{{team.country}}</div>
-    <div *ngIf="this.user.id === this.team.author?._id">
-        <div class="buttons">
-            <a mat-raised-button color="accent" (click)="update()">Update</a>
-            <div class="separator"></div>
-            <a mat-raised-button color="primary"class="delete" (click)="delete()">Delete</a>
-        </div>
+  </div>
+  <div class="country">{{ team.country }}</div>
+  <div *ngIf="this.user.id === this.team.author?._id">
+    <div class="buttons">
+      <a mat-raised-button color="accent" (click)="update()">Update</a>
+      <div class="separator"></div>
+      <a mat-raised-button color="primary" class="delete" (click)="delete()"
+        >Delete</a
+      >
     </div>
+  </div>
 </div>
 
 <div class="matchnplayers">
-    <div class="players">
-        <div class="playerscontainer">
-            <div class="playersteam">
-                <mat-list role="list">
-                    <mat-list-item (click)="playerDetails(player)" *ngFor="let player of players">
-                        <img src="{{player.picture}}" matListAvatar alt="">
-                        <div matLine style="font-weight: bold;"> {{ player.gamertag}}</div>
-                        <div matLine> {{player.fullname}}</div>
-                        <div matLine>{{player.country}}</div>
-                    </mat-list-item>
-                </mat-list>
-            </div>
-        </div>
-        </div>
+  <div class="players">
+    <div class="playerscontainer">
+      <div class="playersteam">
+        <mat-list role="list">
+          <mat-list-item
+            (click)="playerDetails(player)"
+            *ngFor="let player of players"
+          >
+            <img src="{{ player.picture }}" matListAvatar alt="" />
+            <div matLine style="font-weight: bold">{{ player.gamertag }}</div>
+            <div matLine>{{ player.fullname }}</div>
+            <div matLine>{{ player.country }}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
 
-        <table mat-table [dataSource]="matches">
-            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let match; columns: columnsToDisplay" (click)="matchDetails(match)"></tr>
-            <ng-container matColumnDef="date">
-                <th mat-header-cell *matHeaderCellDef>Date</th>
-                <td mat-cell *matCellDef="let match">{{match.date | date:'shortDate'}}</td>
-            </ng-container>
-            <ng-container matColumnDef="matchname">
-                <th mat-header-cell *matHeaderCellDef>Match Name</th>
-                <td mat-cell *matCellDef="let match">{{match.name}}</td>
-            </ng-container>
-            <ng-container matColumnDef="map">
-                <th mat-header-cell *matHeaderCellDef>Map</th>
-                <td mat-cell *matCellDef="let match">{{match.map}}</td>
-            </ng-container>
-            <ng-container matColumnDef="teams">
-                <th mat-header-cell *matHeaderCellDef>Teams</th>
-                <td mat-cell *matCellDef="let match">{{match.team1.teamname}} - {{match.team2.teamname}}</td>
-            </ng-container>
-            <ng-container matColumnDef="score">
-                <th mat-header-cell *matHeaderCellDef>Score</th>
-                <td mat-cell *matCellDef="let match">{{match.resultteam1}} - {{match.resultteam2}}</td>
-            </ng-container>
-            <ng-container matColumnDef="winner">
-                <th mat-header-cell *matHeaderCellDef>Winner</th>
-                <td mat-cell *matCellDef="let match">{{match.winner.teamname}}</td>
-            </ng-container>
-        
-        </table>
-
-
+  <table mat-table [dataSource]="matches">
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr
+      mat-row
+      *matRowDef="let match; columns: columnsToDisplay"
+      (click)="matchDetails(match)"
+    ></tr>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <td mat-cell *matCellDef="let match">
+        {{ match.date | date : "shortDate" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="matchname">
+      <th mat-header-cell *matHeaderCellDef>Match Name</th>
+      <td mat-cell *matCellDef="let match">{{ match.name }}</td>
+    </ng-container>
+    <ng-container matColumnDef="map">
+      <th mat-header-cell *matHeaderCellDef>Map</th>
+      <td mat-cell *matCellDef="let match">{{ match.map }}</td>
+    </ng-container>
+    <ng-container matColumnDef="teams">
+      <th mat-header-cell *matHeaderCellDef>Teams</th>
+      <td mat-cell *matCellDef="let match">
+        {{ match.team1.teamname }} - {{ match.team2.teamname }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="score">
+      <th mat-header-cell *matHeaderCellDef>Score</th>
+      <td mat-cell *matCellDef="let match">
+        {{ match.resultteam1 }} - {{ match.resultteam2 }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="winner">
+      <th mat-header-cell *matHeaderCellDef>Winner</th>
+      <td mat-cell *matCellDef="let match">{{ match.winner.teamname }}</td>
+    </ng-container>
+  </table>
 </div>
-
-
-
-

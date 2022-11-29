@@ -9,35 +9,38 @@ import { MapCreateComponent } from '../map-create/map-create.component';
 @Component({
   selector: 'app-maps',
   templateUrl: './maps.component.html',
-  styleUrls: ['./maps.component.css']
+  styleUrls: ['./maps.component.css'],
 })
 export class MapsComponent implements OnInit {
-
   public isLoggedIn: boolean = false;
 
   public maps: Map[] = [];
 
-  constructor(private storageService: StorageService, private mapService: MapService, private dialog: MatDialog, private router: Router) { }
+  constructor(
+    private storageService: StorageService,
+    private mapService: MapService,
+    private dialog: MatDialog,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.mapService.list().subscribe(data => {
+    this.mapService.list().subscribe((data) => {
       this.maps = data;
-    })
-    this.isLoggedIn = this.storageService.isLoggedIn()
+    });
+    this.isLoggedIn = this.storageService.isLoggedIn();
   }
 
   createMap(): void {
     const dialogRef = this.dialog.open(MapCreateComponent);
 
     dialogRef.afterClosed().subscribe(() => {
-      this.mapService.list().subscribe(data => {
+      this.mapService.list().subscribe((data) => {
         this.maps = data;
-      })
-    })
+      });
+    });
   }
 
   openMap(map: Map): void {
     this.router.navigate(['maps', map._id]);
   }
-
 }

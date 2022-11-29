@@ -10,57 +10,60 @@ import { StorageService } from 'src/app/services/storage.service';
 @Component({
   selector: 'app-players',
   templateUrl: './players.component.html',
-  styleUrls: ['./players.component.css']
+  styleUrls: ['./players.component.css'],
 })
 export class PlayersComponent implements OnInit {
-
   players: Player[] = [];
   columns: number = 5;
   isLoggedIn = false;
 
-  constructor(private playerService: PlayerService, private router: Router, private breakpointObserver: BreakpointObserver, public dialog: MatDialog, private storageService: StorageService) { }
+  constructor(
+    private playerService: PlayerService,
+    private router: Router,
+    private breakpointObserver: BreakpointObserver,
+    public dialog: MatDialog,
+    private storageService: StorageService
+  ) {}
 
   ngOnInit(): void {
-    this.playerService.list().subscribe(data => {
+    this.playerService.list().subscribe((data) => {
       this.players = data;
-    })
+    });
     this.isLoggedIn = this.storageService.isLoggedIn();
   }
 
   ngAfterViewInit() {
     this.breakpointObserver
-        .observe(['(max-width: 1800px)'])
-        .subscribe((state: BreakpointState) => {
-            if (state.matches) {
-                this.columns = 3;
-            } else {
-                this.columns = 5;
-            }
-        });
-        this.breakpointObserver
-        .observe(['(max-width: 1000px)'])
-        .subscribe((state: BreakpointState) => {
-          if (state.matches) {
-              this.columns = 1;
-          } else {
-              this.columns = 3;
-          }
-        })
-}
-
+      .observe(['(max-width: 1800px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.columns = 3;
+        } else {
+          this.columns = 5;
+        }
+      });
+    this.breakpointObserver
+      .observe(['(max-width: 1000px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.columns = 1;
+        } else {
+          this.columns = 3;
+        }
+      });
+  }
 
   playerDetails(player: Player): void {
-    this.router.navigate(['players', player._id])
+    this.router.navigate(['players', player._id]);
   }
 
   createPlayer() {
     const dialogRef = this.dialog.open(PlayerCreateComponent);
 
     dialogRef.afterClosed().subscribe(() => {
-      this.playerService.list().subscribe(data => {
+      this.playerService.list().subscribe((data) => {
         this.players = data;
-      })
-    })
+      });
+    });
   }
-
 }

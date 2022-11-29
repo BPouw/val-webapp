@@ -8,15 +8,13 @@ describe('PlayerUpdateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayerUpdateComponent ]
-    })
-    .compileComponents();
+      declarations: [PlayerUpdateComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(PlayerUpdateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-  });
+  it('should create', () => {});
 });

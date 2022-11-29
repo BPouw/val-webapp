@@ -1,23 +1,25 @@
 <div class="mapheader">
-    <div class="active" *ngIf="this.map.is_active">
-        <p>{{this.map.name}} </p>
-        <p>🟢</p>
-    </div>
-    <div class="active" *ngIf="!this.map.is_active">
-        <p>{{this.map.name}}</p>
-        <p>🔴</p>
-    </div>
+  <div class="active" *ngIf="this.map.is_active">
+    <p>{{ this.map.name }}</p>
+    <p>🟢</p>
+  </div>
+  <div class="active" *ngIf="!this.map.is_active">
+    <p>{{ this.map.name }}</p>
+    <p>🔴</p>
+  </div>
 
-    <div class="description">
-        <h3>{{this.map.description}}</h3>
-    </div>
+  <div class="description">
+    <h3>{{ this.map.description }}</h3>
+  </div>
 
-    <div class="buttons" *ngIf="this.user.id === this.map.author._id">
-        <a mat-raised-button color="accent" (click)="update()">Update</a>
-        <div class="separator"></div>
-        <a mat-raised-button color="primary"class="delete" (click)="delete()">Delete</a>
-    </div>
+  <div class="buttons" *ngIf="this.user.id === this.map.author._id">
+    <a mat-raised-button color="accent" (click)="update()">Update</a>
+    <div class="separator"></div>
+    <a mat-raised-button color="primary" class="delete" (click)="delete()"
+      >Delete</a
+    >
+  </div>
 </div>
 <div class="image">
-    <img class="filter" src="{{this.map.thumbnail}}" alt="">
+  <img class="filter" src="{{ this.map.thumbnail }}" alt="" />
 </div>

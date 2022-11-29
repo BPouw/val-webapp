@@ -1,14 +1,16 @@
 <div class="form-container" [formGroup]="newMap">
-    <h3>Update map</h3>
-    <mat-form-field>
-        <mat-label>Map name</mat-label>
-        <input matInput formControlName="name">
-    </mat-form-field>
-    <mat-label>Active in the map pool?</mat-label>
-    <mat-checkbox (change)="toggle($event)"></mat-checkbox>
-    <mat-form-field>
-        <mat-label>Description</mat-label>
-        <input matInput formControlName="description">
-    </mat-form-field>
-      <a mat-raised-button color="accent" [mat-dialog-close] (click)="submit()">Update</a>
+  <h3>Update map</h3>
+  <mat-form-field>
+    <mat-label>Map name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+  <mat-label>Active in the map pool?</mat-label>
+  <mat-checkbox (change)="toggle($event)"></mat-checkbox>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput formControlName="description" />
+  </mat-form-field>
+  <a mat-raised-button color="accent" [mat-dialog-close] (click)="submit()"
+    >Update</a
+  >
 </div>

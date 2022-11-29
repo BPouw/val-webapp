@@ -5,14 +5,12 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  constructor(private authService: AuthService) {}
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -24,20 +22,19 @@ export class RegisterComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      let username = this.form.value.username
-      let password = this.form.value.password
+      let username = this.form.value.username;
+      let password = this.form.value.password;
 
       this.authService.register(username, password).subscribe({
-        next: data => {
-          this.isSuccessful = true
+        next: (data) => {
+          this.isSuccessful = true;
         },
-        error: err => {
+        error: (err) => {
           this.isSignUpFailed = true;
-        }
-      })
+        },
+      });
     }
   }
 
   @Input() error: string | undefined;
-
 }

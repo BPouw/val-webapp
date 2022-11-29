@@ -6,31 +6,34 @@ import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
 import { PlayerService } from 'src/app/services/player.service';
 import { TeamService } from 'src/app/services/team.service';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-player-update',
   templateUrl: './player-update.component.html',
-  styleUrls: ['./player-update.component.css']
+  styleUrls: ['./player-update.component.css'],
 })
 export class PlayerUpdateComponent implements OnInit {
-
   public teams: Team[] = [];
-  public agents = Object.values(Agent).filter(x => typeof x === "string")
+  public agents = Object.values(Agent);
 
-  selectedAgents: string[] = []
+  selectedAgents: string[] = [];
 
-   public defaultValue: Country = {
-     name: this.data.country,
-     alpha2Code: '',
-     alpha3Code: '',
-     numericCode: '',
-     callingCode: ''
-   };
+  public defaultValue: Country = {
+    name: this.data.country,
+    alpha2Code: '',
+    alpha3Code: '',
+    numericCode: '',
+    callingCode: '',
+  };
 
-   public defaultTeam: Team = this.data.team;
+  public defaultTeam: Team = this.data.team;
 
-  constructor(private teamService: TeamService, private playerService: PlayerService, @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(
+    private teamService: TeamService,
+    private playerService: PlayerService,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
 
   newPlayer = new FormGroup({
     gamertag: new FormControl(this.data.gamertag),
@@ -42,19 +45,18 @@ export class PlayerUpdateComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.teamService.list().subscribe(data => {
+    this.teamService.list().subscribe((data) => {
       this.teams = data;
-      })
+    });
   }
-  
 
   submit(): void {
     if (this.newPlayer.valid) {
-      let gamertag = this.newPlayer.value.gamertag || ""
-      let name = this.newPlayer.value.name || ""
-      let earnings = this.newPlayer.value.earnings || 0
-      let team = this.newPlayer.value.team || this.teams[0]
-      let country = this.newPlayer.value.country || this.defaultValue
+      let gamertag = this.newPlayer.value.gamertag || '';
+      let name = this.newPlayer.value.name || '';
+      let earnings = this.newPlayer.value.earnings || 0;
+      let team = this.newPlayer.value.team || this.teams[0];
+      let country = this.newPlayer.value.country || this.defaultValue;
 
       let player: Player = {
         _id: this.data._id,
@@ -65,11 +67,9 @@ export class PlayerUpdateComponent implements OnInit {
         earnings: earnings,
         agents: this.selectedAgents,
         team: team,
-        author: this.data.author
-      }
+        author: this.data.author,
+      };
       this.playerService.update(player).subscribe();
-    
     }
   }
-
 }

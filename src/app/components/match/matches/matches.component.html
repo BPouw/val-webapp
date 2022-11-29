@@ -1,36 +1,51 @@
 <div class="header">
-    <p>Valorant matches</p>
-    <div *ngIf="this.isLoggedIn">
-        <a class="headerbutton" mat-raised-button color="accent" (click)="createMatch()">Create</a>
-    </div>
+  <p>Valorant matches</p>
+  <div *ngIf="this.isLoggedIn">
+    <a
+      class="headerbutton"
+      mat-raised-button
+      color="accent"
+      (click)="createMatch()"
+      >Create</a
+    >
   </div>
+</div>
 
 <table mat-table [dataSource]="matches">
-    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-<tr mat-row *matRowDef="let match; columns: columnsToDisplay" (click)="matchDetails(match)"></tr>
-    <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef>Date</th>
-        <td mat-cell *matCellDef="let match">{{match.date | date:'shortDate'}}</td>
-    </ng-container>
-    <ng-container matColumnDef="matchname">
-        <th mat-header-cell *matHeaderCellDef>Match Name</th>
-        <td mat-cell *matCellDef="let match">{{match.name}}</td>
-    </ng-container>
-    <ng-container matColumnDef="map">
-        <th mat-header-cell *matHeaderCellDef>Map</th>
-        <td mat-cell *matCellDef="let match">{{match.map}}</td>
-    </ng-container>
-    <ng-container matColumnDef="teams">
-        <th mat-header-cell *matHeaderCellDef>Teams</th>
-        <td mat-cell *matCellDef="let match">{{match.team1.teamname}} - {{match.team2.teamname}}</td>
-    </ng-container>
-    <ng-container matColumnDef="score">
-        <th mat-header-cell *matHeaderCellDef>Score</th>
-        <td mat-cell *matCellDef="let match">{{match.resultteam1}} - {{match.resultteam2}}</td>
-    </ng-container>
-    <ng-container matColumnDef="winner">
-        <th mat-header-cell *matHeaderCellDef>Winner</th>
-        <td mat-cell *matCellDef="let match">{{match.winner.teamname}}</td>
-    </ng-container>
-
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr
+    mat-row
+    *matRowDef="let match; columns: columnsToDisplay"
+    (click)="matchDetails(match)"
+  ></tr>
+  <ng-container matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let match">
+      {{ match.date | date : "shortDate" }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="matchname">
+    <th mat-header-cell *matHeaderCellDef>Match Name</th>
+    <td mat-cell *matCellDef="let match">{{ match.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="map">
+    <th mat-header-cell *matHeaderCellDef>Map</th>
+    <td mat-cell *matCellDef="let match">{{ match.map.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="teams">
+    <th mat-header-cell *matHeaderCellDef>Teams</th>
+    <td mat-cell *matCellDef="let match">
+      {{ match.team1.teamname }} - {{ match.team2.teamname }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="score">
+    <th mat-header-cell *matHeaderCellDef>Score</th>
+    <td mat-cell *matCellDef="let match">
+      {{ match.resultteam1 }} - {{ match.resultteam2 }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="winner">
+    <th mat-header-cell *matHeaderCellDef>Winner</th>
+    <td mat-cell *matCellDef="let match">{{ match.winner.teamname }}</td>
+  </ng-container>
 </table>

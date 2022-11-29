@@ -1,54 +1,51 @@
-
-
 .header {
-    background-color: #673ab7;
-    color: white;
-    font-size: 35px;
-    text-align: center;
-    padding: 60px;
-    font-weight: 500;
+  background-color: #673ab7;
+  color: white;
+  font-size: 35px;
+  text-align: center;
+  padding: 60px;
+  font-weight: 500;
 }
 .players {
-    padding-top: 25px;
+  padding-top: 25px;
 }
 
-  mat-card {
-    width: inherit;
-    height: inherit;
-    box-sizing: border-box;
-  }
+mat-card {
+  width: inherit;
+  height: inherit;
+  box-sizing: border-box;
+}
 
-  img {
-    border-radius: 50%;
-  }
+img {
+  border-radius: 50%;
+}
 
-  .card {
-    max-height: 150px;
-    min-height: 150px;
-    max-width: 350px;
-    min-width: 350px;
-    /* border: 1px solid grey; */
-    background-color: lightgrey;
-    border-radius: 10px;
-  }
+.card {
+  max-height: 150px;
+  min-height: 150px;
+  max-width: 350px;
+  min-width: 350px;
+  /* border: 1px solid grey; */
+  background-color: lightgrey;
+  border-radius: 10px;
+}
 
 .text {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .logo {
-    opacity: 100%;
-    width: 40px;
-    height: 40px;
-    margin-top: 10px;
-    border-radius: 0;
-    margin-right: 8px;
-    margin-left: 8px;
+  opacity: 100%;
+  width: 40px;
+  height: 40px;
+  margin-top: 10px;
+  border-radius: 0;
+  margin-right: 8px;
+  margin-left: 8px;
 }
 
-
 .card:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .logotext {
@@ -59,5 +56,3 @@
 .headerbutton {
   margin-top: 10px;
 }
-
-
