@@ -29,9 +29,14 @@ export class TeamDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.teamService.read(params['id']).subscribe(data => {
         this.team = data;
-        this.players = this.team.players
-        this.matches = this.team.matches
         this.teamid = this.team._id
+      })
+      this.teamService.getPlayers(params['id']).subscribe(data => {
+        this.players = data;
+        console.log(data)
+      })
+      this.teamService.getMatches(params['id']).subscribe(data => {
+        this.matches = data;
       })
     })
     this.user = this.storageService.getUser();
