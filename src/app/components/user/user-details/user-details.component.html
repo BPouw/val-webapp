@@ -12,6 +12,9 @@
             <p>0</p>
         </div>
     </div>
+    <div *ngIf="!user._id === signedUser.id">
+        <a mat-raised-button color="accent" class="follow">FOLLOW</a>
+    </div>
 </div>
 
 <h1 class="title">CONTENT</h1>

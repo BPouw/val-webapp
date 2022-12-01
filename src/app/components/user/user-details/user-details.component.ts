@@ -5,7 +5,6 @@ import { Match } from 'src/app/models/match.model';
 import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
 import { User } from 'src/app/models/user.model';
-import { MatchService } from 'src/app/services/match.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -21,8 +20,9 @@ export class UserDetailsComponent implements OnInit {
   public teams?: Team[];
   public players?: Player[];
   public maps?: Map[];
+  public signedUser: any;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -44,6 +44,9 @@ export class UserDetailsComponent implements OnInit {
         this.maps = data;
       })
     })
+
+    this.signedUser = this.storageService.getUser();
+
   }
 
   matchDetails(match: Match) {

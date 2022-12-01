@@ -6,6 +6,7 @@ import { Map } from 'src/app/models/map.model';
 import { Match } from 'src/app/models/match.model';
 import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
+import { User } from 'src/app/models/user.model';
 import { MatchService } from 'src/app/services/match.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { TeamService } from 'src/app/services/team.service';
@@ -66,6 +67,10 @@ export class MatchDetailsComponent implements OnInit {
 
   mapDetails(map: Map): void {
     this.router.navigate(['maps', map._id]);
+  }
+
+  userDetails(user: User): void {
+    this.router.navigate(['user', user._id])
   }
 
   update(): void {

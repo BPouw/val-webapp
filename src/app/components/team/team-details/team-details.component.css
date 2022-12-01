@@ -113,3 +113,12 @@ table {
 .separator {
   padding: 10px;
 }
+
+.author {
+  text-align: center;
+  color: white;
+}
+
+.author:hover {
+  color: #ffd740;
+}

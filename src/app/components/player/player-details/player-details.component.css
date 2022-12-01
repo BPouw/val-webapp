@@ -72,3 +72,13 @@
 .separator {
   padding: 10px;
 }
+
+.author {
+  padding-top:100px;
+  margin-left: 10px;
+  color: white;
+}
+
+.author:hover {
+  color: #ffd740;
+}

@@ -37,9 +37,11 @@
         >
       </div>
     </div>
+    <div class="author" (click)="userDetails(match.author)"> Author: {{match.author.username}}</div>
   </div>
 
   <div class="players">
+
     <div class="playersContainer">
       <div class="playersteam">
         <h1>{{ match.team1.teamname }}</h1>

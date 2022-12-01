@@ -125,3 +125,13 @@
 .separator {
   padding: 10px;
 }
+
+.author {
+  text-align: center;
+  color: white;
+  padding-bottom: 10px;
+}
+
+.author:hover {
+  color: #ffd740;
+}

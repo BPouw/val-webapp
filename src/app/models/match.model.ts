@@ -12,5 +12,5 @@ export class Match extends Entity {
   team2!: Team;
   resultteam1?: number;
   resultteam2?: number;
-  author: User | undefined;
+  author!: User;
 }

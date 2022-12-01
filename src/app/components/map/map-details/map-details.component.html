@@ -19,6 +19,7 @@
       >Delete</a
     >
   </div>
+  <div class="author" (click)="userDetails(map.author)"> Author: {{map.author.username}}</div>
 </div>
 <div class="image">
   <img class="filter" src="{{ this.map.thumbnail }}" alt="" />

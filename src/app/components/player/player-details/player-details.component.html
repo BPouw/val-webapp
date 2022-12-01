@@ -5,6 +5,8 @@
     <div class="playerfullname">{{ player.fullname }}</div>
     <div class="country">{{ player.country }}</div>
     <div class="earnings">Earnings: ${{ player.earnings }}</div>
+    <div class="author" (click)="userDetails(player.author)"> Author: {{player.author.username}}</div>
+
   </div>
   <div class="team">
     <img
@@ -14,6 +16,7 @@
       alt=""
     />
   </div>
+
 </div>
 
 <h1 class="agentline">AGENTS</h1>

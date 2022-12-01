@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { MapUpdateComponent } from '../map-update/map-update.component';
 import { StorageService } from 'src/app/services/storage.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-map-details',
@@ -53,5 +54,9 @@ export class MapDetailsComponent implements OnInit {
     this.snackbar.open(`Map ${this.map.name} successfully deleted`, '', {
       duration: 3000,
     });
+  }
+
+  userDetails(user: User): void {
+    this.router.navigate(['user', user._id])
   }
 }

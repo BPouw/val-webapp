@@ -5,6 +5,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Match } from 'src/app/models/match.model';
 import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
+import { User } from 'src/app/models/user.model';
 import { StorageService } from 'src/app/services/storage.service';
 import { TeamService } from 'src/app/services/team.service';
 import { TeamUpdateComponent } from '../team-update/team-update.component';
@@ -54,6 +55,10 @@ export class TeamDetailsComponent implements OnInit {
 
   playerDetails(player: Player): void {
     this.router.navigate(['players', player._id]);
+  }
+
+  userDetails(user: User): void {
+    this.router.navigate(['user', user._id])
   }
 
   update(): void {

@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Player } from 'src/app/models/player.model';
 import { Team } from 'src/app/models/team.model';
+import { User } from 'src/app/models/user.model';
 import { PlayerService } from 'src/app/services/player.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { PlayerUpdateComponent } from '../player-update/player-update.component';
@@ -49,6 +50,10 @@ export class PlayerDetailsComponent implements OnInit {
 
   teamDetails(team: Team): void {
     this.router.navigate(['teams', team._id]);
+  }
+
+  userDetails(user: User): void {
+    this.router.navigate(['user', user._id])
   }
 
   update(): void {

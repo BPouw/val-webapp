@@ -10,5 +10,5 @@ export class Player extends Entity {
   country!: string;
   team!: Team;
   agents!: string[];
-  author: User | undefined;
+  author!: User;
 }

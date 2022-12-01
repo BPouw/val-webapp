@@ -51,9 +51,6 @@ export class TeamUpdateComponent implements OnInit {
         ranking: ranking,
         author: this.user.id,
         logo: 'https://www.vlr.gg/img/vlr/tmp/vlr.png',
-        players: [],
-        matches: [],
-        tournaments: [],
       };
 
       this.teamService.update(team).subscribe();
