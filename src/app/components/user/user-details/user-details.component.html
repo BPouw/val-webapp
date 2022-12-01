@@ -1,0 +1,58 @@
+<div class="banner">
+    <h1>{{user.username}}</h1>
+
+    <div class="follower-box">
+        <div class="following">
+            <p>Following</p>
+            <p>0</p>
+        </div>
+        <div class="spacer"></div>
+        <div class="followers">
+            <p>Followers</p>
+            <p>0</p>
+        </div>
+    </div>
+</div>
+
+<h1 class="title">CONTENT</h1>
+
+<div class="content">
+    <div class="row">
+        <h1>Matches</h1>
+        <div class="matches" *ngFor="let match of matches">
+            <div class="card" (click)="matchDetails(match)">
+                <h1>{{match.name}}</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1>Teams</h1>
+        <div class="teams">
+            <div class="matches" *ngFor="let team of teams">
+                <div class="card" (click)="teamDetails(team)">
+                    <h1>{{team.teamname}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <h1>Players</h1>
+        <div class="players">
+            <div class="matches" *ngFor="let player of players">
+                <div class="card" (click)="playerDetails(player)">
+                    <h1>{{player.gamertag}}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <h1>Maps</h1>
+        <div class="matches" *ngFor="let map of maps">
+            <div class="card" (click)="mapDetails(map)">
+                <h1>{{map.name}}</h1>
+            </div>
+        </div>
+    </div>
+</div>

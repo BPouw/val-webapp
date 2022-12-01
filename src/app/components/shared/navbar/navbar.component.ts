@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -9,13 +10,18 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+
+  public user!: any;
+
   constructor(
     private router: Router,
     private authService: AuthService,
     private storageService: StorageService
   ) {
     this.storageService.changeEmitted$.subscribe((result) => {
-      this.signedIn = result;
+      this.signedIn = result;     
+      this.user = this.storageService.getUser();
+      console.log(this.user)
     });
   }
 
@@ -24,7 +30,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
       this.signedIn = true;
+      this.user = this.storageService.getUser();
     }
+
+
   }
 
   openMatches(): void {
@@ -51,9 +60,14 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['register']);
   }
 
+  openUserPage(user: any): void {
+    console.log(user)
+    this.router.navigate(['user', user.id]);
+  }
+
   signOut(): void {
+    this.authService.logout().subscribe();
     this.storageService.clean();
-    this.authService.logout();
     this.signedIn = false;
     this.router.navigate(['login']);
   }

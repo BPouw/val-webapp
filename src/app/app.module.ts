@@ -43,6 +43,7 @@ import { MapUpdateComponent } from './components/map/map-update/map-update.compo
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MapDetailsComponent,
     MapCreateComponent,
     MapUpdateComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

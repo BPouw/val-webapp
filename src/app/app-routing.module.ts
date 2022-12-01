@@ -10,6 +10,7 @@ import { LoginComponent } from './components/shared/login/login.component';
 import { RegisterComponent } from './components/shared/register/register.component';
 import { MapsComponent } from './components/map/maps/maps.component';
 import { MapDetailsComponent } from './components/map/map-details/map-details.component';
+import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
     path: 'register',
     component: RegisterComponent,
   },
+  {
+    path: 'user/:id',
+    component: UserDetailsComponent
+  }
 ];
 
 @NgModule({

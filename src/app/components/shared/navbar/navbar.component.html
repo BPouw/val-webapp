@@ -18,6 +18,7 @@
     <a mat-raised-button color="accent" (click)="openLogin()">Login</a>
   </ng-container>
   <ng-container *ngIf="signedIn">
+    <a mat-button class="user-boy" (click)="openUserPage(this.user)">{{this.user.username }}</a>
     <a mat-raised-button color="accent" (click)="signOut()">Sign out</a>
   </ng-container>
 </mat-toolbar>

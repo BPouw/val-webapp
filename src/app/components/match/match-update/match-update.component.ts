@@ -93,7 +93,4 @@ export class MatchUpdateComponent implements OnInit {
     }
   }
 
-  compareFn(c1: Map, c2: Map): boolean {
-    return c1 && c2 ? c1._id === c2._id : c1 === c2;
-  }
 }

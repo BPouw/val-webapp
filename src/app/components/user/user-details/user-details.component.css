@@ -1,0 +1,62 @@
+.banner {
+    background-color: #673ab7;
+    padding-bottom: 40px;
+    padding-top: 40px;
+}
+
+.banner h1 {
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    font-weight: 500;
+}
+
+.follower-box {
+    display: flex;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.spacer {
+    margin: 20px;
+}
+
+.title {
+    color: #673ab7;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    max-height: 100px;
+    min-height: 100px;
+    max-width: 350px;
+    min-width: 350px;
+    /* border: 1px solid grey; */
+    background-color: #673ab7;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.card h1 {
+    padding-top: 30px;
+    color: white;
+}
+
+.row h1 {
+    text-align: center;
+}
+
+.row {
+    width: 350px;
+}
