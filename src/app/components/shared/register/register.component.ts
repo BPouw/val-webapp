@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       this.authService.register(username, country, password).subscribe({
         next: (data) => {
           this.isSuccessful = true;
-          this.snackbar.open(`Successfully Registered`, '', {P
+          this.snackbar.open(`Successfully Registered`, '', {
             duration: 3000,
           });
           this.router.navigate(['login'])
