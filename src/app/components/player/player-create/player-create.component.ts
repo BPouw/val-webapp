@@ -15,6 +15,7 @@ import { Country } from '@angular-material-extensions/select-country';
 import { HttpClient } from '@angular/common/http';
 import { StorageService } from 'src/app/services/storage.service';
 import { User } from 'src/app/models/user.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-player-create',
@@ -29,7 +30,7 @@ export class PlayerCreateComponent implements OnInit {
   selectedAgents: string[] = [];
 
   public defaultValue: Country = {
-    name: 'Deutschland',
+    name: 'Germany',
     alpha2Code: 'DE',
     alpha3Code: 'DEU',
     numericCode: '276',
@@ -40,7 +41,8 @@ export class PlayerCreateComponent implements OnInit {
     private teamService: TeamService,
     private playerService: PlayerService,
     private http: HttpClient,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private snackbar: MatSnackBar
   ) {}
 
   newPlayer = new FormGroup({
@@ -78,7 +80,11 @@ export class PlayerCreateComponent implements OnInit {
         team: team,
         author: this.user.id,
       };
-      this.playerService.create(player).subscribe();
+      this.playerService.create(player).subscribe(() => {
+        this.snackbar.open(`Player successfully created`, '', {
+          duration: 3000,
+        });
+      });
     }
   }
 }

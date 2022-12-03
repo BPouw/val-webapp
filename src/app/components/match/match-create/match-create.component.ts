@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Map } from 'src/app/models/map.model';
 import { Match } from 'src/app/models/match.model';
 import { Team } from 'src/app/models/team.model';
@@ -22,7 +23,8 @@ export class MatchCreateComponent implements OnInit {
     private teamService: TeamService,
     private mapService: MapService,
     private matchService: MatchService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private snackbar: MatSnackBar
   ) {}
 
   newMatch = new FormGroup({
@@ -69,7 +71,11 @@ export class MatchCreateComponent implements OnInit {
         resultteam1: scoreteam1,
         resultteam2: scoreteam2,
       };
-      this.matchService.create(match).subscribe();
+      this.matchService.create(match).subscribe(() => {
+        this.snackbar.open(`Match successfully created`, '', {
+          duration: 3000,
+        });
+      });
     }
   }
 

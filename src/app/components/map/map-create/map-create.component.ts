@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Map } from 'src/app/models/map.model';
 import { MapService } from 'src/app/services/map.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -16,7 +17,8 @@ export class MapCreateComponent implements OnInit {
 
   constructor(
     private storageService: StorageService,
-    private mapService: MapService
+    private mapService: MapService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +50,11 @@ export class MapCreateComponent implements OnInit {
         author: this.user.id,
       };
 
-      this.mapService.create(map).subscribe();
+      this.mapService.create(map).subscribe(() => {
+        this.snackbar.open(`Player successfully created`, '', {
+          duration: 3000,
+        });
+      });
     }
   }
 }

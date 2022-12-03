@@ -1,6 +1,7 @@
 import { Country } from '@angular-material-extensions/select-country';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Team } from 'src/app/models/team.model';
 import { StorageService } from 'src/app/services/storage.service';
 import { TeamService } from 'src/app/services/team.service';
@@ -12,7 +13,7 @@ import { TeamService } from 'src/app/services/team.service';
 })
 export class TeamCreateComponent implements OnInit {
   private defaultValue: Country = {
-    name: 'Deutschland',
+    name: 'Germany',
     alpha2Code: 'DE',
     alpha3Code: 'DEU',
     numericCode: '276',
@@ -23,7 +24,8 @@ export class TeamCreateComponent implements OnInit {
 
   constructor(
     private storageService: StorageService,
-    private teamService: TeamService
+    private teamService: TeamService,
+    private snackbar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +53,11 @@ export class TeamCreateComponent implements OnInit {
         logo: 'https://www.vlr.gg/img/vlr/tmp/vlr.png',
       };
 
-      this.teamService.create(team).subscribe();
+      this.teamService.create(team).subscribe(() => {
+        this.snackbar.open(`Player successfully created`, '', {
+          duration: 3000,
+        });
+      });
     }
   }
 }

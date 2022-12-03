@@ -1,6 +1,8 @@
 import { Country } from '@angular-material-extensions/select-country';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private snackbar: MatSnackBar, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -41,6 +43,10 @@ export class RegisterComponent implements OnInit {
       this.authService.register(username, country, password).subscribe({
         next: (data) => {
           this.isSuccessful = true;
+          this.snackbar.open(`Successfully Registered`, '', {P
+            duration: 3000,
+          });
+          this.router.navigate(['login'])
         },
         error: (err) => {
           this.isSignUpFailed = true;
