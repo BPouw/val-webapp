@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/shared/register/register.compone
 import { MapsComponent } from './components/map/maps/maps.component';
 import { MapDetailsComponent } from './components/map/map-details/map-details.component';
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
+import { AboutComponent } from './components/shared/about/about.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,10 @@ const routes: Routes = [
   {
     path: 'user/:id',
     component: UserDetailsComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   }
 ];
 

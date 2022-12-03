@@ -60,6 +60,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['register']);
   }
 
+  openAbout(): void {
+    this.router.navigate(['about']);
+  }
+
   openUserPage(user: any): void {
     console.log(user)
     this.router.navigate(['user', user.id]);

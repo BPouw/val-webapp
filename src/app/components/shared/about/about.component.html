@@ -1,0 +1,198 @@
+<div class="row">
+    <div class="col-sm-6 col-md-8 col-lg-9">
+        <h3 id="aboutTitle">Over deze applicatie</h3>
+        <p>
+            Deze applicatie is gemaakt in het kader van het vak 'Clientside web
+            frameworks' van Avans Hogeschool Breda.
+        </p>
+        <h1>Valorant esports</h1>
+        <p>
+            Dit project is een Valorant esports applicatie, Valorant is een video game die competitief gespeeld kan worden. Het doel van deze website is om deze competitie bij te kunnen houden.
+            <br>
+            De competitie bestaat uit matches die gespeeld worden, het team dat de meeste rondes heeft wint de match. 
+            <br>
+            Een match bestaat uit 2 teams en ieder team bestaat uit 5 spelers. Iedere match wordt op een map gespeeld.
+            <br>
+
+        </p>
+    </div>
+    <div class="user">
+        <div class="card">
+            <div
+                class="d-flex justify-content-center align-items-center px-3 py-3"
+            >
+                <img
+                    src="assets/images/person.png"
+                    class="card-img-top rounded-circle border profile-pic px-4 py-4"
+                    alt="..."
+                />
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Boris Pouw</h5>
+                <p class="card-text">Studentnummer: 2116083</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3>Entiteiten</h3>
+
+<img src="assets/images/ERD.png" class="px-5 py-5" alt="..." />
+
+<div class="row">
+    <div class="col-sm-12 col-md-4">
+        <p>Match</p>
+        <ul>
+            <li>name: string</li>
+            <li>winner: Team</li>
+            <li>date: Date</li>
+            <li>team1: Team</li>
+            <li>team2: Team</li>
+            <li>resultteam1: number</li>
+            <li>resultteam2: number</li>
+            <li>author: User</li>
+        </ul>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <p>Team</p>
+        <ul>
+            <li>teamname: string</li>
+            <li>country: string</li>
+            <li>ranking: number</li>
+            <li>logo: string</li>
+            <li>author: User</li>
+        </ul>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <p>Player</p>
+        <ul>
+            <li>gamertag: string</li>
+            <li>fullname: string</li>
+            <li>picture: string</li>
+            <li>earnings: number</li>
+            <li>country: string</li>
+            <li>team: Team</li>
+            <li>agents: string[]</li>
+            <li>author: User</li>
+        </ul>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <p>Map</p>
+        <ul>
+            <li>name: string</li>
+            <li>thumbnail: string</li>
+            <li>is_active: boolean</li>
+            <li>description: string</li>
+            <li>author: User</li>
+        </ul>
+    </div>
+    <div class="col-sm-12 col-md-4">
+        <p>User</p>
+        <ul>
+            <li>username: string</li>
+            <li>country: string</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <h3>Userstories</h3>
+        <table class="table table-bordered">
+            <thead>
+                <th>Nr</th>
+                <th class="col-6">Userstory</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        Als gebruiker wil ik een overzicht van matches kunnen zien zodat ik weet wanneer een match plaats vindt.
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>
+                        Als gebruiker wil ik kunnen zien welke spelers en teams in een match spelen en op welke map dit gespeeld wordt.
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>
+                        Als ingelogde gebruiker wil ik een match kunnen toevoegen, wijzigen en verwijderen.
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td>4</td>
+                    <td>
+                        Als gebruiker wil ik een overzicht van alle teams kunnen zien zodat ik weet welke teams er zijn.
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>
+                        Als gebruiker wil ik weten welke spelers er in een team zitten en welke matches een team speelt.
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>
+                        Als ingelogde gebruiker wil ik een team kunnen toevoegen, wijzigen en verwijderen.
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td>7</td>
+                    <td>
+                        Als gebruiker wil ik een overzicht van alle spelers kunnen zien zodat ik weet welke spelers er zijn.
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>
+                        Als gebruiker wil ik weten in wat voor team een speler speelt en welke agents deze spelers spelen.
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>
+                        Als ingelogde gebruiker wil ik een speler kunnen toevoegen, wijzigen en verwijderen.
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td>10</td>
+                    <td>
+                        Als gebruiker wil ik een overzicht van alle maps kunnen zien zodat ik weet welke maps er zijn.
+                    </td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>
+                        Als ingelogde gebruiker wil ik een map kunnen toevoegen, wijzigen en verwijderen.
+                    </td>
+                </tr>
+                <br>
+                <tr>
+                    <td>12</td>
+                    <td>
+                        Als gebruiker wil ik een de auteur kunnen zien van entiteit.
+                    </td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>
+                        Als gebruiker wil ik alle aangemaakte entiteiten van een auteur zien
+                    </td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>
+                        Als ingelogde gebruiker wil ik een auteur kunnen volgen en gevolgd worden.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
