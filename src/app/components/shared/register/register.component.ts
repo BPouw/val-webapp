@@ -1,3 +1,4 @@
+import { Country } from '@angular-material-extensions/select-country';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,8 +13,17 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  public defaultValue: Country = {
+    name: 'Germany',
+    alpha2Code: 'DE',
+    alpha3Code: 'DEU',
+    numericCode: '276',
+    callingCode: '',
+  };
+
   form: FormGroup = new FormGroup({
     username: new FormControl(''),
+    country: new FormControl<Country>(this.defaultValue),
     password: new FormControl(''),
   });
 
@@ -23,9 +33,12 @@ export class RegisterComponent implements OnInit {
   submit() {
     if (this.form.valid) {
       let username = this.form.value.username;
+
+      let country = this.form.value.country.name
+
       let password = this.form.value.password;
 
-      this.authService.register(username, password).subscribe({
+      this.authService.register(username, country, password).subscribe({
         next: (data) => {
           this.isSuccessful = true;
         },

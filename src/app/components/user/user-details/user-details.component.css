@@ -3,19 +3,23 @@
     padding-bottom: 40px;
     padding-top: 40px;
     text-align: center;
+    color: white;
 }
 
 .banner h1 {
     text-align: center;
     font-size: 25px;
-    color: white;
     font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.country {
+    padding-bottom: 10px;
 }
 
 .follower-box {
     display: flex;
     justify-content: center;
-    color: white;
     text-align: center;
 }
 
