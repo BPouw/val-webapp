@@ -28,13 +28,13 @@ export class MatchCreateComponent implements OnInit {
   ) {}
 
   newMatch = new FormGroup({
-    matchname: new FormControl<string>(''),
-    date: new FormControl<Date>(new Date()),
-    map: new FormControl<Map>(this.maps[1]),
-    team1: new FormControl(this.teams[1]),
-    team2: new FormControl(this.teams[1]),
-    scoreteam1: new FormControl<number>(0),
-    scoreteam2: new FormControl<number>(0),
+    matchname: new FormControl<string>('', Validators.required),
+    date: new FormControl<Date>(new Date(), Validators.required),
+    map: new FormControl<Map>(this.maps[1], Validators.required),
+    team1: new FormControl(this.teams[1], Validators.required),
+    team2: new FormControl(this.teams[1], Validators.required),
+    scoreteam1: new FormControl<number>(0, Validators.required),
+    scoreteam2: new FormControl<number>(0, Validators.required),
   });
 
   ngOnInit(): void {
@@ -76,6 +76,7 @@ export class MatchCreateComponent implements OnInit {
           duration: 3000,
         });
       });
+    } else {
     }
   }
 

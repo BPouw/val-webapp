@@ -5,16 +5,18 @@
     <div class="follower-box">
         <div class="following">
             <p>Following</p>
-            <p>0</p>
+            <p>{{this.following}}</p>
         </div>
         <div class="spacer"></div>
         <div class="followers">
             <p>Followers</p>
-            <p>0</p>
+            <p>{{this.followers}}</p>
         </div>
     </div>
-    <div *ngIf="!user._id === signedUser.id">
-        <a mat-raised-button color="accent" class="follow">FOLLOW</a>
+    <div *ngIf="!ownProfile" class="buttons">
+        <a mat-raised-button color="accent" class="follow" (click)="follow()">FOLLOW</a>
+        <div class="spacer"></div>
+        <a mat-raised-button color="primary" class="follow" (click)="unfollow()">UNFOLLOW</a>
     </div>
 </div>
 

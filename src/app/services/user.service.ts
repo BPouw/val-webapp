@@ -8,10 +8,19 @@ import { Match } from '../models/match.model';
 import { Team } from '../models/team.model';
 import { Player } from '../models/player.model';
 import { Map } from '../models/map.model';
+import { createUrlTreeFromSnapshot } from '@angular/router';
+
+const httpOptions = {
+  observe: 'body',
+  responseType: 'json',
+};
+
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
   constructor(private http: HttpClient) {}
+
+
 
   getUser(userid: number | string): Observable<User> {
     return this.http.get<User>(
@@ -41,5 +50,31 @@ export class UserService {
     return this.http.get<Map[]>(
       environment.api + 'users/' + userid + '/maps'
     );
+  }
+
+  follow(userid: string, currentUser: string, options?: any): Observable<any> {
+
+    const payload = {
+      "followUser": userid
+    };
+
+    return this.http.post<any>(environment.api + 'users/' + currentUser + '/follow', payload,{ ...options, ...httpOptions } )
+  }
+
+  unfollow(userid: string, currentUser: string, options?: any): Observable<any> {
+
+    const payload = {
+      "unfollowUser": userid
+    };
+
+    return this.http.post(environment.api + 'users/' + currentUser + '/unfollow', payload, { ...options, ...httpOptions })
+  }
+
+  followers(userid: string): Observable<any> {
+    return this.http.get(environment.api + 'users/' + userid + '/followers')
+  }
+
+  following(userid: string): Observable<any> {
+    return this.http.get(environment.api + 'users/' + userid + '/following')
   }
 }

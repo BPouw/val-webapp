@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Map } from 'src/app/models/map.model';
 import { Match } from 'src/app/models/match.model';
@@ -21,18 +22,23 @@ export class UserDetailsComponent implements OnInit {
   public players?: Player[];
   public maps?: Map[];
   public signedUser: any;
+  public ownProfile: boolean = false;
+  public followers: number = 0;
+  public following: number = 0;
 
-  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService) { }
+  constructor(private userService: UserService, private activatedRoute: ActivatedRoute, private router: Router, private storageService: StorageService, private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.userService.getUser(params['id']).subscribe((data) => {
         this.user = data;
-        console.log(this.user)
+        this.signedUser = this.storageService.getUser();
+        if (this.signedUser.id === this.user._id) {
+          this.ownProfile = true;
+        }
       });
       this.userService.getUserMatches(params['id']).subscribe((data) => {
         this.matches = data;
-        console.log(this.matches)
       })
       this.userService.getUserTeams(params['id']).subscribe((data) => {
         this.teams = data;
@@ -43,10 +49,16 @@ export class UserDetailsComponent implements OnInit {
       this.userService.getUserMaps(params['id']).subscribe((data) => {
         this.maps = data;
       })
+      this.userService.following(params['id']).subscribe((data) => {
+        this.following = data.following;
+      })
+      this.userService.followers(params['id']).subscribe((data) => {
+        this.followers = data.followers;
+      })
     })
 
     this.signedUser = this.storageService.getUser();
-
+    console.log(this.signedUser.id)
   }
 
   matchDetails(match: Match) {
@@ -63,6 +75,25 @@ export class UserDetailsComponent implements OnInit {
 
   mapDetails(map: Map) {
     this.router.navigate(['maps', map._id])
+  }
+
+  follow() {
+    this.user._id && this.userService.follow(this.user._id, this.signedUser.id).subscribe(() => {
+      this.snackbar.open(`User followed`, '', {
+        duration: 3000,
+      });
+      this.ngOnInit();
+    })
+  }
+
+
+  unfollow() {
+    this.user._id && this.userService.unfollow(this.user._id, this.signedUser.id).subscribe(() => {
+      this.snackbar.open(`User unfollowed`, '', {
+        duration: 3000,
+      });
+      this.ngOnInit();
+    })
   }
 
 }
