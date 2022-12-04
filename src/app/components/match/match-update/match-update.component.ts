@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Map } from 'src/app/models/map.model';
 import { Match } from 'src/app/models/match.model';
 import { Team } from 'src/app/models/team.model';
@@ -32,13 +32,13 @@ export class MatchUpdateComponent implements OnInit {
   }
 
   newMatch = new FormGroup({
-    matchname: new FormControl<string>(this.data.name),
-    date: new FormControl<Date>(this.data.date),
-    map: new FormControl<Map>(this.data.map._id),
-    team1: new FormControl(this.data.team1._id),
-    team2: new FormControl(this.data.team2._id),
-    scoreteam1: new FormControl<number>(this.data.resultteam1),
-    scoreteam2: new FormControl<number>(this.data.resultteam2),
+    matchname: new FormControl<string>(this.data.name, Validators.required),
+    date: new FormControl<Date>(this.data.date, Validators.required),
+    map: new FormControl<Map>(this.data.map._id, Validators.required),
+    team1: new FormControl(this.data.team1._id, Validators.required),
+    team2: new FormControl(this.data.team2._id, Validators.required),
+    scoreteam1: new FormControl<number>(this.data.resultteam1, Validators.required),
+    scoreteam2: new FormControl<number>(this.data.resultteam2, Validators.required),
   });
 
   ngOnInit(): void {
@@ -91,6 +91,34 @@ export class MatchUpdateComponent implements OnInit {
     } else {
       return team2;
     }
+  }
+
+  get matchname() {
+    return this.newMatch.get('matchname');
+  }
+
+  get date() {
+    return this.newMatch.get('date');
+  }
+
+  get mapper() {
+    return this.newMatch.get('map')
+  }
+
+  get team1() {
+    return this.newMatch.get('team1')
+  }
+
+  get team2() {
+    return this.newMatch.get('team2')
+  }
+
+  get scoreteam1() {
+    return this.newMatch.get('scoreteam1')
+  }
+
+  get scoreteam2() {
+    return this.newMatch.get('scoreteam2')
   }
 
 }

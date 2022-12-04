@@ -47,9 +47,7 @@ export class MatchesComponent implements OnInit {
     const dialogRef = this.dialog.open(MatchCreateComponent);
 
     dialogRef.afterClosed().subscribe(() => {
-      this.matchService.list().subscribe((data) => {
-        this.matches = data;
-      });
+      this.ngOnInit();
     });
   }
 }

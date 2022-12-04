@@ -11,6 +11,7 @@ import { MatchService } from 'src/app/services/match.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { TeamService } from 'src/app/services/team.service';
 import { MatchUpdateComponent } from '../match-update/match-update.component';
+import { MatchesComponent } from '../matches/matches.component';
 
 @Component({
   selector: 'app-match-details',
@@ -86,10 +87,11 @@ export class MatchDetailsComponent implements OnInit {
   }
 
   delete(): void {
-    this.match._id && this.matchService.delete(this.match._id).subscribe();
-    this.router.navigate(['matches']);
-    this.snackbar.open(`Match ${this.match.name} successfully deleted`, '', {
-      duration: 3000,
+    this.match._id && this.matchService.delete(this.match._id).subscribe(() => {
+      this.router.navigate(['matches']);
+      this.snackbar.open(`Match ${this.match.name} successfully deleted`, '', {
+        duration: 3000,
+      });
     });
   }
 }

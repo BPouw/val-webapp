@@ -80,6 +80,34 @@ export class MatchCreateComponent implements OnInit {
     }
   }
 
+  get matchname() {
+    return this.newMatch.get('matchname');
+  }
+
+  get date() {
+    return this.newMatch.get('date');
+  }
+
+  get map() {
+    return this.newMatch.get('map')
+  }
+
+  get team1() {
+    return this.newMatch.get('team1')
+  }
+
+  get team2() {
+    return this.newMatch.get('team2')
+  }
+
+  get scoreteam1() {
+    return this.newMatch.get('scoreteam1')
+  }
+
+  get scoreteam2() {
+    return this.newMatch.get('scoreteam2')
+  }
+
   calculateWinner(
     scoreteam1: number,
     scoreteam2: number,

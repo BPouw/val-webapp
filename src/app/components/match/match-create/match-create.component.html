@@ -4,6 +4,7 @@
   <mat-form-field>
     <mat-label>Match name</mat-label>
     <input matInput formControlName="matchname" />
+    <mat-error *ngIf="matchname?.invalid && matchname?.touched">A match must have a name</mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -15,16 +16,18 @@
         [for]="picker"
       ></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="date?.invalid && date?.touched">A match must have a date</mat-error>
     </div>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Map</mat-label>
-    <mat-select formControlName="team1">
+    <mat-select formControlName="map">
       <mat-option *ngFor="let map of maps" [value]="map._id">{{
         map.name
       }}</mat-option>
     </mat-select>
+    <mat-error *ngIf="map?.invalid && map?.touched">A match must a map</mat-error>
   </mat-form-field>
 
   <div class="vertical-container">
@@ -36,11 +39,13 @@
             team.teamname
           }}</mat-option>
         </mat-select>
+        <mat-error *ngIf="team1?.invalid && team1?.touched">A match must have 2 teams</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Score</mat-label>
         <input matInput type="number" formControlName="scoreteam1" />
+        <mat-error *ngIf="scoreteam1?.invalid && scoreteam1?.touched">There must be a score</mat-error>
       </mat-form-field>
     </div>
 
@@ -52,16 +57,18 @@
             team.teamname
           }}</mat-option>
         </mat-select>
+        <mat-error *ngIf="team2?.invalid && team2?.touched">A match must have 2 teams</mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Score</mat-label>
         <input matInput type="number" formControlName="scoreteam2" />
+        <mat-error *ngIf="scoreteam2?.invalid && scoreteam2?.touched">There must be a score</mat-error>
       </mat-form-field>
     </div>
   </div>
 
-  <a mat-raised-button color="accent" [mat-dialog-close] (click)="submit()"
+  <a mat-raised-button color="accent" [disabled]="newMatch.invalid" [mat-dialog-close] (click)="submit()"
     >Create</a
   >
 </div>
