@@ -3,13 +3,16 @@
   <mat-form-field>
     <mat-label>Team name</mat-label>
     <input matInput formControlName="teamname" />
+    <mat-error *ngIf="teamname?.invalid && teamname?.touched">A team must have a name</mat-error>
   </mat-form-field>
   <mat-select-country formControlName="country"></mat-select-country>
+  <mat-error *ngIf="country?.invalid && country?.touched">A team must have a country</mat-error>
   <mat-form-field>
     <mat-label>Ranking</mat-label>
     <input matInput type="number" formControlName="ranking" />
+    <mat-error *ngIf="ranking?.invalid && ranking?.touched">A team must have a rank</mat-error>
   </mat-form-field>
-  <a mat-raised-button color="accent" [mat-dialog-close] (click)="submit()"
+  <a mat-raised-button color="accent" [disabled]="newTeam.invalid"  [mat-dialog-close] (click)="submit()"
     >Update</a
   >
 </div>

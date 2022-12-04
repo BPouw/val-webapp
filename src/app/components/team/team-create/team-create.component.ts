@@ -1,6 +1,6 @@
 import { Country } from '@angular-material-extensions/select-country';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Team } from 'src/app/models/team.model';
 import { StorageService } from 'src/app/services/storage.service';
@@ -33,9 +33,9 @@ export class TeamCreateComponent implements OnInit {
   }
 
   newTeam = new FormGroup({
-    teamname: new FormControl(''),
-    country: new FormControl<Country>(this.defaultValue),
-    ranking: new FormControl<number>(0),
+    teamname: new FormControl('', Validators.required),
+    country: new FormControl<Country>(this.defaultValue, Validators.required),
+    ranking: new FormControl<number>(0, Validators.required),
   });
 
   submit(): void {
@@ -59,5 +59,17 @@ export class TeamCreateComponent implements OnInit {
         });
       });
     }
+  }
+
+  get teamname() {
+    return this.newTeam.get('teamname')
+  }
+
+  get country() {
+    return this.newTeam.get('country')
+  }
+
+  get ranking() {
+    return this.newTeam.get('ranking')
   }
 }

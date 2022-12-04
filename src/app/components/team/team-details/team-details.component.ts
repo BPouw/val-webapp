@@ -75,10 +75,11 @@ export class TeamDetailsComponent implements OnInit {
   }
 
   delete(): void {
-    this.teamid && this.teamService.delete(this.teamid).subscribe();
-    this.router.navigate(['teams']);
-    this.snackbar.open(`Team ${this.team.teamname} successfully deleted`, '', {
-      duration: 3000,
+    this.teamid && this.teamService.delete(this.teamid).subscribe(() => {
+      this.router.navigate(['teams']);
+      this.snackbar.open(`Team ${this.team.teamname} successfully deleted`, '', {
+        duration: 3000,
+      });
     });
   }
 }
