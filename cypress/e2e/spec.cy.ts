@@ -41,7 +41,7 @@ describe('Login test', () => {
 describe('Matches test', () => {
   it('creates a match', () => {
     cy.visit('http://localhost:4200/matches')
-    cy.contains('Create').click();
+    cy.get('body > app-root > app-matches > div > div > a > span.mat-button-wrapper').click();
     cy.get('[formcontrolname="matchname"]').type('TEST MATCH')
     cy.get('[formcontrolname="map"]').click().get('mat-option').contains('Icebox').click();
     cy.get('[formcontrolname="team1"]').click().get('mat-option').contains('Sentinels').click();;
