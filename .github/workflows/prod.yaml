@@ -11,14 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm install
-      - name: Build the application
-        run: npm run build
-      - name: Spin the application
-        run: npm run start
-      - name: Run Cypress tests
-        run: npx cypress run
+      - name: Cypress testing
+        uses: cypress-io/github-action@v2
+        with:
+          build: npm run build
+          start: npm start
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
       - name: Pull Vercel Environment Information
