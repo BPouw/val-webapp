@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Map } from 'src/app/models/map.model';
@@ -26,8 +26,8 @@ export class MapCreateComponent implements OnInit {
   }
 
   newMap = new FormGroup({
-    name: new FormControl(''),
-    description: new FormControl(''),
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
   });
 
   toggle(event: MatCheckboxChange): void {
@@ -56,5 +56,13 @@ export class MapCreateComponent implements OnInit {
         });
       });
     }
+  }
+
+  get name() {
+    return this.newMap.get('name');
+  }
+
+  get description() {
+    return this.newMap.get('description')
   }
 }

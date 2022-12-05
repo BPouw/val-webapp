@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Map } from 'src/app/models/map.model';
 import { MapService } from 'src/app/services/map.service';
@@ -26,8 +26,8 @@ export class MapUpdateComponent implements OnInit {
   }
 
   newMap = new FormGroup({
-    name: new FormControl(this.data.name),
-    description: new FormControl(this.data.description),
+    name: new FormControl(this.data.name, Validators.required),
+    description: new FormControl(this.data.description, Validators.required),
   });
 
   toggle(event: MatCheckboxChange): void {
@@ -51,5 +51,13 @@ export class MapUpdateComponent implements OnInit {
 
       this.mapService.update(map).subscribe();
     }
+  }
+
+  get name() {
+    return this.newMap.get('name');
+  }
+
+  get description() {
+    return this.newMap.get('description')
   }
 }

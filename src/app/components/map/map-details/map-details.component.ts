@@ -49,10 +49,11 @@ export class MapDetailsComponent implements OnInit {
   }
 
   delete(): void {
-    this.map._id && this.mapService.delete(this.map._id).subscribe();
-    this.router.navigate(['maps']);
-    this.snackbar.open(`Map ${this.map.name} successfully deleted`, '', {
-      duration: 3000,
+    this.map._id && this.mapService.delete(this.map._id).subscribe(() => {
+      this.router.navigate(['maps']);
+      this.snackbar.open(`Map ${this.map.name} successfully deleted`, '', {
+        duration: 3000,
+      });
     });
   }
 
