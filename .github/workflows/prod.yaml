@@ -15,6 +15,8 @@ jobs:
         run: npm install
       - name: Build the application
         run: npm run build
+      - name: Spin the application
+        run: npm run start
       - name: Run Cypress tests
         run: npx cypress run
       - name: Install Vercel CLI
