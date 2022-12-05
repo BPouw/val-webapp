@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { StorageService } from 'src/app/services/storage.service';
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
 
   submit() {
@@ -49,6 +49,14 @@ export class LoginComponent implements OnInit {
         },
       });
     }
+  }
+
+  get username() {
+    return this.form.get('username')
+  }
+
+  get password() {
+    return this.form.get('password')
   }
 
   @Input() error: string | undefined;

@@ -1,6 +1,6 @@
 import { Country } from '@angular-material-extensions/select-country';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -24,9 +24,9 @@ export class RegisterComponent implements OnInit {
   };
 
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    country: new FormControl<Country>(this.defaultValue),
-    password: new FormControl(''),
+    username: new FormControl('', Validators.required),
+    country: new FormControl<Country>(this.defaultValue, Validators.required),
+    password: new FormControl('', Validators.required),
   });
 
   isSuccessful = false;
@@ -55,5 +55,16 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  @Input() error: string | undefined;
+  get username() {
+    return this.form.get('username');
+  }
+
+  get country() {
+    return this.form.get('country');
+  }
+
+  get password() {
+    return this.form.get('password')
+  }
+
 }

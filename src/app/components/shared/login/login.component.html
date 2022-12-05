@@ -10,6 +10,7 @@
             placeholder="Username"
             formControlName="username"
           />
+          <mat-error *ngIf="username?.invalid && username?.touched">You must have a username</mat-error>
         </mat-form-field>
       </p>
 
@@ -21,6 +22,7 @@
             placeholder="Password"
             formControlName="password"
           />
+          <mat-error *ngIf="password?.invalid && password?.touched">You must have a password</mat-error>
         </mat-form-field>
       </p>
 
@@ -30,7 +32,7 @@
 
       <div class="button">
         <!-- <button type="submit" mat-button>Login</button> -->
-        <button mat-raised-button color="accent" type="sumbit">Login</button>
+        <button mat-raised-button [disabled]="this.form.invalid" color="accent" type="submit">Login</button>
       </div>
     </form>
   </mat-card-content>
