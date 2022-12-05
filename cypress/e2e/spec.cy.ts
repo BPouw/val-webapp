@@ -32,4 +32,14 @@ describe('Login test', () => {
     cy.visit('http://localhost:4200/login')
     cy.contains('Login')
   })
+
+  it('logs in with credentials', () => {
+    cy.visit('http://localhost:4200/login')
+    cy.get('body > app-root > app-login > mat-card > mat-card-content > form')
+      .get('#mat-input-0')
+      .type('pouw')
+      .get('#mat-input-1')
+      .type('something')
+    cy.get('button').contains('Login').click();
+  })
 })
