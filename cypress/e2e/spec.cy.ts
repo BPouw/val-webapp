@@ -1,9 +1,3 @@
-describe('Matches test', () => {
-  it('Loads the page', () => {
-    cy.visit('http://localhost:4200/')
-  })
-})
-
 describe('Navbar test', () => {
   it('visits teams', () => {
     cy.visit('http://localhost:4200/')
@@ -42,4 +36,18 @@ describe('Login test', () => {
       .type('something')
     cy.get('button').contains('Login').click();
   })
+})
+
+describe('Matches test', () => {
+  it('creates a match', () => {
+    cy.visit('http://localhost:4200/matches')
+    cy.contains('Create').click();
+    cy.get('[formcontrolname="matchname"]').type('TEST MATCH')
+    cy.get('[formcontrolname="map"]').click().get('mat-option').contains('Icebox').click();
+    cy.get('[formcontrolname="team1"]').click().get('mat-option').contains('Sentinels').click();;
+    cy.get('[formcontrolname="team2"]').click().get('mat-option').contains('100 Thieves').click();;
+    cy.get('#mat-dialog-0 > app-match-create > div > a').click();
+    cy.wait(10000);
+  })
+
 })
