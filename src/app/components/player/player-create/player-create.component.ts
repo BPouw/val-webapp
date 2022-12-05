@@ -46,12 +46,12 @@ export class PlayerCreateComponent implements OnInit {
   ) {}
 
   newPlayer = new FormGroup({
-    gamertag: new FormControl('', { nonNullable: true }),
+    gamertag: new FormControl('', Validators.required),
     name: new FormControl<string>('', Validators.required),
-    agents: new FormControl(),
-    earnings: new FormControl<number>(0),
-    team: new FormControl(this.teams[1]),
-    country: new FormControl<Country>(this.defaultValue),
+    agents: new FormControl(Validators.required),
+    earnings: new FormControl<number>(0, Validators.required),
+    team: new FormControl(this.teams[1], Validators.required),
+    country: new FormControl<Country>(this.defaultValue, Validators.required),
   });
 
   ngOnInit(): void {
@@ -87,4 +87,24 @@ export class PlayerCreateComponent implements OnInit {
       });
     }
   }
-}
+
+  get gamertag() {
+    return this.newPlayer.get('gamertag')
+  }
+
+  get country() {
+    return this.newPlayer.get('country')
+  }
+
+  get name() {
+    return this.newPlayer.get('name')
+  }
+
+  get earnings() {
+    return this.newPlayer.get('earnings')
+  }
+
+  get team() {
+    return this.newPlayer.get('team')
+  }
+ }

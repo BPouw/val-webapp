@@ -36,12 +36,12 @@ export class PlayerUpdateComponent implements OnInit {
   ) {}
 
   newPlayer = new FormGroup({
-    gamertag: new FormControl(this.data.gamertag),
-    name: new FormControl<string>(this.data.fullname),
-    agents: new FormControl(this.data.agents),
-    earnings: new FormControl<number>(this.data.earnings),
-    team: new FormControl(this.data.team._id),
-    country: new FormControl<Country>(this.defaultValue),
+    gamertag: new FormControl(this.data.gamertag, Validators.required),
+    name: new FormControl<string>(this.data.fullname, Validators.required),
+    agents: new FormControl(this.data.agents, Validators.required),
+    earnings: new FormControl<number>(this.data.earnings, Validators.required),
+    team: new FormControl(this.data.team._id, Validators.required),
+    country: new FormControl<Country>(this.defaultValue, Validators.required),
   });
 
   ngOnInit(): void {
@@ -71,5 +71,25 @@ export class PlayerUpdateComponent implements OnInit {
       };
       this.playerService.update(player).subscribe();
     }
+  }
+
+  get gamertag() {
+    return this.newPlayer.get('gamertag')
+  }
+
+  get country() {
+    return this.newPlayer.get('country')
+  }
+
+  get name() {
+    return this.newPlayer.get('name')
+  }
+
+  get earnings() {
+    return this.newPlayer.get('earnings')
+  }
+
+  get team() {
+    return this.newPlayer.get('team')
   }
 }

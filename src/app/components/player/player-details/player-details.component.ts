@@ -69,14 +69,15 @@ export class PlayerDetailsComponent implements OnInit {
   }
 
   delete(): void {
-    this.playerid && this.playerService.delete(this.playerid).subscribe();
-    this.router.navigate(['players']);
-    this.snackbar.open(
-      `Player ${this.player.gamertag} successfully deleted`,
-      '',
-      {
-        duration: 3000,
-      }
-    );
+    this.playerid && this.playerService.delete(this.playerid).subscribe(() => {
+      this.router.navigate(['players']);
+      this.snackbar.open(
+        `Player ${this.player.gamertag} successfully deleted`,
+        '',
+        {
+          duration: 3000,
+        }
+      );
+    });
   }
 }
