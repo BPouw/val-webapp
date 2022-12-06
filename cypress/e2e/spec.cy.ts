@@ -43,7 +43,7 @@ describe('Login test', () => {
       .get('#mat-input-1')
       .type('something')
     cy.get('button').contains('Login').click();
-    cy.wait(5000);
+    cy.wait(10000);
   })
 })
 
