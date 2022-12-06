@@ -43,6 +43,7 @@
     "@types/jasmine": "~4.0.0",
     "@types/jquery": "^3.5.9",
     "cypress": "^10.11.0",
+    "cypress-v10-preserve-cookie": "^1.2.1",
     "jasmine-core": "~4.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
