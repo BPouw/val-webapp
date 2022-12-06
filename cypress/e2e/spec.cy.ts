@@ -11,6 +11,14 @@ describe('Navbar test', () => {
     cy.visit('http://localhost:4200/')
     cy.contains('Players').click()
   })
+  it('visits maps', () => {
+    cy.visit('http://localhost:4200/')
+    cy.contains('Maps').click()
+  })
+  it('visits about', () => {
+    cy.visit('http://localhost:4200/')
+    cy.contains('About').click()
+  })
   it('visits login', () => {
     cy.visit('http://localhost:4200/')
     cy.contains('Login').click()
@@ -92,5 +100,36 @@ describe('Teams test', () => {
 
   it('deletes the new team', () => {
     cy.get('body > app-root > app-team-details > div.infocontainer > div:nth-child(3) > div > a.mat-focus-indicator.delete.mat-raised-button.mat-button-base.mat-primary').click()
+  })
+})
+
+describe('Players test', () => {
+  it('creates a new player', () => {
+    cy.visit('http://localhost:4200/players')
+    cy.get('body > app-root > app-players > div.header > div > a').click()
+    cy.get('#mat-dialog-0 > app-player-create > div')
+    cy.get('[formcontrolname="gamertag"]').type('TEST PLAYER')
+    cy.get('[formcontrolname="name"]').type('Test Player')
+    cy.get('[formcontrolname="agents"]').click().get('mat-option').contains('Reyna').click().type('{esc}');
+    cy.get('[formcontrolname="team"]').click().get('mat-option').contains('100 Thieves').click();
+    cy.get('#mat-dialog-0 > app-player-create > div > a').click();
+    cy.wait(2000);
+  })
+
+  it('visits the new player', () => {
+    cy.visit('http://localhost:4200/players')
+    cy.contains('TEST PLAYER').click()
+  })
+
+  it('updates the new player', () => {
+    cy.get('body > app-root > app-player-details > div:nth-child(4) > div > a.mat-focus-indicator.mat-raised-button.mat-button-base.mat-accent > span.mat-button-wrapper').click()
+    cy.get('#mat-dialog-0 > app-player-update > div')
+    cy.get('[formcontrolname="agents"]').click().get('mat-option').contains('Jett').click().type('{esc}');
+    cy.get('#mat-dialog-0 > app-player-update > div > a').click();
+    cy.wait(2000);
+  })
+
+  it('deletes the new player', () => {
+    cy.get('body > app-root > app-player-details > div:nth-child(4) > div > a.mat-focus-indicator.delete.mat-raised-button.mat-button-base.mat-primary > span.mat-button-wrapper').click()
   })
 })
