@@ -34,8 +34,8 @@ describe('Login test', () => {
       .type('pouw')
       .get('#mat-input-1')
       .type('something')
-    cy.get('button').contains('Login').click().as('Login');
-    cy.wait('Login');
+    cy.get('button').contains('Login').click();
+    cy.wait(2000);
   })
 })
 
@@ -47,12 +47,23 @@ describe('Matches test', () => {
     cy.get('[formcontrolname="map"]').click().get('mat-option').contains('Icebox').click();
     cy.get('[formcontrolname="team1"]').click().get('mat-option').contains('Sentinels').click();;
     cy.get('[formcontrolname="team2"]').click().get('mat-option').contains('The Guard').click();;
-    cy.get('#mat-dialog-0 > app-match-create > div > a').click().as('Create');
-    cy.wait('Create');
+    cy.get('#mat-dialog-0 > app-match-create > div > a').click();
+    cy.wait(2000);
   })
 
   it('visits our new match', () => {
+    cy.contains('TEST MATCH').click()
+  })
 
+  it('updates the new match', () => {
+    cy.get('body > div.matchcontainer > div.ng-star-inserted > div > a.mat-focus-indicator.mat-raised-button.mat-button-base.mat-accent > span.mat-button-wrapper').click();
+    cy.get('[formcontrolname="matchname"]').type('2')
+    cy.get('#mat-dialog-1 > app-match-update > div > a').click()
+    cy.wait(2000);
+  })
+
+  it('deletes the new match', () => {
+    cy.get('body > div.matchcontainer > div.ng-star-inserted > div > a.mat-focus-indicator.delete.mat-raised-button.mat-button-base.mat-primary > span.mat-button-wrapper').click()
   })
 
 })
