@@ -1,5 +1,3 @@
-import 'cypress'
-
 describe('Navbar test', () => {
   it('visits teams', () => {
     cy.visit('http://localhost:4200/')
