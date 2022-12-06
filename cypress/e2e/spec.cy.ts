@@ -154,6 +154,12 @@ describe('Maps test', () => {
   })
 
   it('updates the new map', () => {
+    cy.get('body > app-root > app-map-details > div.mapheader > div.buttons > a.mat-focus-indicator.mat-raised-button.mat-button-base.mat-accent > span.mat-button-wrapper').click()
+    cy.get('[formcontrolname="name"]').type('1')
+    cy.get('#mat-dialog-0 > app-map-update > div > a > span.mat-button-wrapper').click()
+  })
 
+  it('deletes the new map', () => {
+    cy.get('body > app-root > app-map-details > div.mapheader > div.buttons > a.mat-focus-indicator.delete.mat-raised-button.mat-button-base.mat-primary').click()
   })
 })
