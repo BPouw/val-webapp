@@ -48,7 +48,11 @@ describe('Matches test', () => {
     cy.get('[formcontrolname="team1"]').click().get('mat-option').contains('Sentinels').click();;
     cy.get('[formcontrolname="team2"]').click().get('mat-option').contains('The Guard').click();;
     cy.get('#mat-dialog-0 > app-match-create > div > a').click();
-    cy.wait(10000);
+    cy.wait(1000);
+  })
+
+  it('visits our new match', () => {
+
   })
 
 })
