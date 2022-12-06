@@ -54,7 +54,7 @@ export class TeamCreateComponent implements OnInit {
       };
 
       this.teamService.create(team).subscribe(() => {
-        this.snackbar.open(`Player successfully created`, '', {
+        this.snackbar.open(`Team successfully created`, '', {
           duration: 3000,
         });
       });

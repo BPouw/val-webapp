@@ -48,22 +48,49 @@ describe('Matches test', () => {
     cy.get('[formcontrolname="team1"]').click().get('mat-option').contains('Sentinels').click();;
     cy.get('[formcontrolname="team2"]').click().get('mat-option').contains('The Guard').click();;
     cy.get('#mat-dialog-0 > app-match-create > div > a').click();
-    cy.wait(2000);
+    cy.wait(3000);
   })
 
   it('visits our new match', () => {
+    cy.visit('http://localhost:4200/matches')
     cy.contains('TEST MATCH').click()
   })
 
   it('updates the new match', () => {
-    cy.get('body > div.matchcontainer > div.ng-star-inserted > div > a.mat-focus-indicator.mat-raised-button.mat-button-base.mat-accent > span.mat-button-wrapper').click();
+    cy.get('body > div.matchcontainer > div:nth-child(7) > div > a.mat-focus-indicator.mat-raised-button.mat-button-base.mat-accent > span.mat-button-wrapper').click()
     cy.get('[formcontrolname="matchname"]').type('2')
-    cy.get('#mat-dialog-1 > app-match-update > div > a').click()
+    cy.get('#mat-dialog-0 > app-match-update > div > a').click()
     cy.wait(2000);
   })
 
   it('deletes the new match', () => {
-    cy.get('body > div.matchcontainer > div.ng-star-inserted > div > a.mat-focus-indicator.delete.mat-raised-button.mat-button-base.mat-primary > span.mat-button-wrapper').click()
+    cy.get('body > div.matchcontainer > div:nth-child(7) > div > a.mat-focus-indicator.delete.mat-raised-button.mat-button-base.mat-primary').click()
+  })
+})
+
+describe('Teams test', () => {
+  it('creates a new team', () => {
+    cy.visit('http://localhost:4200/teams')
+    cy.get('body > app-root > app-teams > div.header > div > a > span.mat-button-wrapper').click()
+    cy.get('[formcontrolname="teamname"]').type('TEST TEAM')
+    cy.get('#mat-dialog-0 > app-team-create > div > a').click()
+    cy.wait(2000);
   })
 
+  it('visits the new team', () => {
+    cy.visit('http://localhost:4200/teams')
+    cy.contains('TEST TEAM').click()
+  })
+
+  it('updates the new team', () => {
+    cy.get('body > app-root > app-team-details > div.infocontainer > div:nth-child(3) > div > a.mat-focus-indicator.mat-raised-button.mat-button-base.mat-accent').click()
+    cy.get('#mat-dialog-0 > app-team-update > div')
+    cy.get('[formcontrolname="teamname"]').type('2')
+    cy.get('#mat-dialog-0 > app-team-update > div > a').click()
+    cy.wait(2000);
+  })
+
+  it('deletes the new team', () => {
+    cy.get('body > app-root > app-team-details > div.infocontainer > div:nth-child(3) > div > a.mat-focus-indicator.delete.mat-raised-button.mat-button-base.mat-primary').click()
+  })
 })
