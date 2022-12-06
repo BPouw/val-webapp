@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'http://localhost:80/api/'
+  api: 'https://val-api.herokuapp.com/api/'
 };
 
 /*
