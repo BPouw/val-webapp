@@ -7,3 +7,7 @@ export default defineConfig({
     },
   },
 });
+
+module.exports = {
+  projectId: "zyyqf5",
+}
