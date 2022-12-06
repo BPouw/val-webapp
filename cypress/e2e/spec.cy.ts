@@ -55,6 +55,7 @@ describe('Matches test', () => {
     cy.get('[formcontrolname="map"]').click().get('mat-option').contains('Icebox').click();
     cy.get('[formcontrolname="team1"]').click().get('mat-option').contains('Sentinels').click();;
     cy.get('[formcontrolname="team2"]').click().get('mat-option').contains('The Guard').click();;
+    cy.wait(1000);
     cy.get('#mat-dialog-0 > app-match-create > div > a').click();
     cy.wait(3000);
   })
@@ -81,6 +82,7 @@ describe('Teams test', () => {
     cy.visit('http://localhost:4200/teams')
     cy.get('body > app-root > app-teams > div.header > div > a > span.mat-button-wrapper').click()
     cy.get('[formcontrolname="teamname"]').type('TEST TEAM')
+    cy.wait(1000);
     cy.get('#mat-dialog-0 > app-team-create > div > a').click()
     cy.wait(2000);
   })
@@ -112,6 +114,7 @@ describe('Players test', () => {
     cy.get('[formcontrolname="name"]').type('Test Player')
     cy.get('[formcontrolname="agents"]').click().get('mat-option').contains('Reyna').click().type('{esc}');
     cy.get('[formcontrolname="team"]').click().get('mat-option').contains('100 Thieves').click();
+    cy.wait(1000);
     cy.get('#mat-dialog-0 > app-player-create > div > a').click();
     cy.wait(2000);
   })
@@ -141,6 +144,7 @@ describe('Maps test', () => {
     cy.get('#mat-dialog-0 > app-map-create > div')
     cy.get('[formcontrolname="name"]').type('TEST MAP')
     cy.get('[formcontrolname="description"]').type('This is a test map')
+    cy.wait(1000);
     cy.get('#mat-dialog-0 > app-map-create > div > a > span.mat-button-wrapper').click()
   })
 
@@ -150,6 +154,6 @@ describe('Maps test', () => {
   })
 
   it('updates the new map', () => {
-    
+
   })
 })
