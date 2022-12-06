@@ -133,3 +133,23 @@ describe('Players test', () => {
     cy.get('body > app-root > app-player-details > div:nth-child(4) > div > a.mat-focus-indicator.delete.mat-raised-button.mat-button-base.mat-primary > span.mat-button-wrapper').click()
   })
 })
+
+describe('Maps test', () => {
+  it('creates a new map', () => {
+    cy.visit('http://localhost:4200/maps')
+    cy.get('body > app-root > app-maps > div.header > div > a > span.mat-button-wrapper').click();
+    cy.get('#mat-dialog-0 > app-map-create > div')
+    cy.get('[formcontrolname="name"]').type('TEST MAP')
+    cy.get('[formcontrolname="description"]').type('This is a test map')
+    cy.get('#mat-dialog-0 > app-map-create > div > a > span.mat-button-wrapper').click()
+  })
+
+  it('visits the new map', () => {
+    cy.visit('http://localhost:4200/maps')
+    cy.contains('TEST MAP').click()
+  })
+
+  it('updates the new map', () => {
+    
+  })
+})
