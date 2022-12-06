@@ -34,8 +34,8 @@ describe('Login test', () => {
       .type('pouw')
       .get('#mat-input-1')
       .type('something')
-    cy.get('button').contains('Login').click();
-    cy.wait(10000);
+    cy.get('button').contains('Login').click().as('Login');
+    cy.wait('Login');
   })
 })
 
@@ -47,8 +47,8 @@ describe('Matches test', () => {
     cy.get('[formcontrolname="map"]').click().get('mat-option').contains('Icebox').click();
     cy.get('[formcontrolname="team1"]').click().get('mat-option').contains('Sentinels').click();;
     cy.get('[formcontrolname="team2"]').click().get('mat-option').contains('The Guard').click();;
-    cy.get('#mat-dialog-0 > app-match-create > div > a').click();
-    cy.wait(1000);
+    cy.get('#mat-dialog-0 > app-match-create > div > a').click().as('Create');
+    cy.wait('Create');
   })
 
   it('visits our new match', () => {
