@@ -43,7 +43,7 @@ describe('Login test', () => {
       .get('#mat-input-1')
       .type('something')
     cy.get('button').contains('Login').click();
-    cy.wait(10000);
+    cy.wait(3000);
   })
 })
 
@@ -56,6 +56,7 @@ describe('Matches test', () => {
     cy.get('[formcontrolname="team1"]').click().get('mat-option').contains('Sentinels').click();;
     cy.get('[formcontrolname="team2"]').click().get('mat-option').contains('The Guard').click();;
     cy.get('#mat-dialog-0 > app-match-create > div > a').click();
+    cy.wait(3000);
   })
 
   it('visits our new match', () => {
@@ -67,6 +68,7 @@ describe('Matches test', () => {
     cy.get('body > div.matchcontainer > div:nth-child(7) > div > a.mat-focus-indicator.mat-raised-button.mat-button-base.mat-accent > span.mat-button-wrapper').click()
     cy.get('[formcontrolname="matchname"]').type('2')
     cy.get('#mat-dialog-0 > app-match-update > div > a').click()
+    cy.wait(3000);
   })
 
   it('deletes the new match', () => {
@@ -80,6 +82,7 @@ describe('Teams test', () => {
     cy.get('body > app-root > app-teams > div.header > div > a > span.mat-button-wrapper').click()
     cy.get('[formcontrolname="teamname"]').type('TEST TEAM')
     cy.get('#mat-dialog-0 > app-team-create > div > a').click()
+    cy.wait(3000);
   })
 
   it('visits the new team', () => {
@@ -92,6 +95,7 @@ describe('Teams test', () => {
     cy.get('#mat-dialog-0 > app-team-update > div')
     cy.get('[formcontrolname="teamname"]').type('2')
     cy.get('#mat-dialog-0 > app-team-update > div > a').click()
+    cy.wait(3000);
   })
 
   it('deletes the new team', () => {
@@ -109,6 +113,7 @@ describe('Players test', () => {
     cy.get('[formcontrolname="agents"]').click().get('mat-option').contains('Reyna').click().type('{esc}');
     cy.get('[formcontrolname="team"]').click().get('mat-option').contains('100 Thieves').click();
     cy.get('#mat-dialog-0 > app-player-create > div > a').click();
+    cy.wait(3000);
   })
 
   it('visits the new player', () => {
@@ -121,6 +126,7 @@ describe('Players test', () => {
     cy.get('#mat-dialog-0 > app-player-update > div')
     cy.get('[formcontrolname="agents"]').click().get('mat-option').contains('Jett').click().type('{esc}');
     cy.get('#mat-dialog-0 > app-player-update > div > a').click();
+    cy.wait(3000);
   })
 
   it('deletes the new player', () => {
@@ -136,6 +142,7 @@ describe('Maps test', () => {
     cy.get('[formcontrolname="name"]').type('TEST MAP')
     cy.get('[formcontrolname="description"]').type('This is a test map')
     cy.get('#mat-dialog-0 > app-map-create > div > a > span.mat-button-wrapper').click()
+    cy.wait(3000);
   })
 
   it('visits the new map', () => {
@@ -147,6 +154,7 @@ describe('Maps test', () => {
     cy.get('body > app-root > app-map-details > div.mapheader > div.buttons > a.mat-focus-indicator.mat-raised-button.mat-button-base.mat-accent > span.mat-button-wrapper').click()
     cy.get('[formcontrolname="name"]').type('1')
     cy.get('#mat-dialog-0 > app-map-update > div > a > span.mat-button-wrapper').click()
+    cy.wait(3000);
   })
 
   it('deletes the new map', () => {
