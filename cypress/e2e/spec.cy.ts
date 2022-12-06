@@ -38,12 +38,6 @@ describe('Login test', () => {
   })
 })
 
-describe('Endpoint debugger', () => {
-  it('calls my endpoint', () => {
-    cy.request('https://val-api.herokuapp.com/api/matches')
-  })
-})
-
 describe('Matches test', () => {
   it('creates a match', () => {
     cy.visit('http://localhost:4200/matches')
