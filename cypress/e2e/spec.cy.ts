@@ -38,6 +38,10 @@ describe('Login test', () => {
   })
 })
 
+describe('Endpoint debugger', () => {
+  cy.request('https://val-api.herokuapp.com/api/matches')
+})
+
 describe('Matches test', () => {
   it('creates a match', () => {
     cy.visit('http://localhost:4200/matches')
@@ -45,7 +49,7 @@ describe('Matches test', () => {
     cy.get('[formcontrolname="matchname"]').type('TEST MATCH')
     cy.get('[formcontrolname="map"]').click().get('mat-option').contains('Icebox').click();
     cy.get('[formcontrolname="team1"]').click().get('mat-option').contains('Sentinels').click();;
-    cy.get('[formcontrolname="team2"]').click().get('mat-option').contains('100 Thieves').click();;
+    cy.get('[formcontrolname="team2"]').click().get('mat-option').contains('The Guard').click();;
     cy.get('#mat-dialog-0 > app-match-create > div > a').click();
     cy.wait(10000);
   })
